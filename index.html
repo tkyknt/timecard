@@ -19,7 +19,22 @@
     <h1>フォーエム出勤簿 </h1><br />
     現在時刻： <script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
             // -->
-        </SCRIPT><br />
+ </SCRIPT><br />
+            <form action="kintai.php" method="post">
+            名前：
+            <select name="name">
+                <option value="宇野壮春" selected>宇野壮春</option>
+                <option value="関健太郎">関健太郎</option>
+                <option value="三木清雅" >三木清雅</option>
+                <option value="鈴木淳">鈴木淳</option>
+                <option value="瀬戸秀穂">瀬戸秀穂</option>
+                <option value="橋本光平">橋本光平</option>
+                <option value="伊左治美奈">伊左治美奈</option>
+                <option value="木野田拓也">木野田拓也</option>
+            </select><br />
+            <input type="submit" name="submit" value="勤怠入力" /> <br />
+               </form>
+
     <A href="syukkin.html">出勤入力</A><br />
     <A href="taikin.html">退勤入力</A><br />
     <A href="list.html">入力内容抽出(出勤）</A><br />

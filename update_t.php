@@ -11,32 +11,18 @@
         <title>入力結果</title>
 </head>
 <body>
-    <h1>入力完了</h1><br />
+
 <?php
 mb_language("ja");
 mb_internal_encoding("UTF-8");
   require_once 'DSN.php';
   $pdo = new PDO($dsn['host'], $dsn['user'],$dsn['pass']);
   $st = $pdo -> query("SET NAMES utf8;");
-  if ( ! $_POST['date'] ){
-      $date = date('Y-m-d');
-      } else {
-          $date = $_POST['date'];
-      }
-  $sql = $pdo->prepare("SELECT * FROM kintai WHERE date = :date AND name = :name");
-  $st -> bindValue(':date', $date, PDO::PARAM_INT);
-  $sql->execute();
-  
-  if ($rows = $st -> fetch()) {
-    $name = $rows["name"];
-    $age = $rows["age"];
-}
 
-  
-  $sql = "UPDATE kintai SET time2 = :time soutai = :soutai comment2 = :comment WHERE date = :date";
+  $sql = "UPDATE kintai SET time_t = :time soutai = :soutai comment_t = :comment WHERE date = :date AND name = :name";
   $st = $pdo->prepare($sql);
   $params = array(':time' => $_POST['time'], ':soutai' => $_POST['soutai'], 
-      ':comment' => $_POST['comment'], ':date' => $date);
+      ':comment' => $_POST['comment'], ':date' => $date,':name' => $_POST['name']);
   $st->execute($params);
 
   print date('Y-m-d H:i:s')."<br />"; 
@@ -57,6 +43,6 @@ else {
 }
 ?>
     <br /><A href="index.html">ホーム</A><br />
-</body>
-</html>
+
+
         
