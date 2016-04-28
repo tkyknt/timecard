@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
+        <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
+        <!-- ※デフォルトのスタイル（style.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
+        <!-- ※タブレット用のスタイル（tablet.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
+        <!-- ※スマートフォン用のスタイル（smart.css） -->
+        <title>出勤一覧</title>
+    </head>
+    <body>
+        <div>入力内容抽出(出勤）</div>
+    <br /> <br />
+        <form action="list.php" method="post">
+            名前：
+            <select name="name">
+                <option value="全員" selected>全員</option>
+                <option value="宇野壮春">宇野壮春</option>
+                <option value="関健太郎">関健太郎</option>
+                <option value="三木清雅" >三木清雅</option>
+                <option value="鈴木淳">鈴木淳</option>
+                <option value="瀬戸秀穂">瀬戸秀穂</option>
+                <option value="橋本光平">橋本光平</option>
+                <option value="三木美奈">伊左治美奈</option>
+                <option value="木野田拓也">木野田拓也</option>
+            </select><br />
+            始め：<input type="date" name="date1" ><br />
+            終わり：<input type="date" name="date2" ><br />
+
+           <input type="submit" name="submit" value="抽出" /><br />
+            </form>
+        <br /><A href="listt.html">退勤一覧はこちら</A><br />
+        <A href="taikin.html">退勤入力はこちら</A><br />
+        <A href="syukkin.html">出勤入力はこちら</A><br />
+        <A href="index.html">ホーム</A><br />
+    </body>
+</html>

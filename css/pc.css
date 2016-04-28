@@ -1,0 +1,17 @@
+@media screen and (min-width: 769px){
+img{
+max-width: 100%;
+height: auto;
+width /***/:auto;　
+}
+#container{
+width:100%;
+}
+body
+{
+	margin : 1em 1.8em ;				/* スペース */
+	padding: 0 ;		/* 余白 */
+	font-size: 15px ;		/* 文字サイズ */
+	line-height: 1.618 ;	/* 行の高さ */
+}
+}   

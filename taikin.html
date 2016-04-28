@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
+        <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
+        <!-- ※デフォルトのスタイル（style.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
+        <!-- ※タブレット用のスタイル（tablet.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
+        <!-- ※スマートフォン用のスタイル（smart.css） -->
+        <title>退勤日報入力</title>
+        <script type="text/javascript" src="cookie3.js"></script>
+<body onLoad="getck()">
+    <h1>退勤入力</h1>
+    <br /> <br />
+    現在時刻： <script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
+            // -->
+        </SCRIPT><br />
+        <form action="insertt.php" method="post">
+            名前：
+            <select name="name">
+                <option value="宇野壮春" selected>宇野壮春</option>
+                <option value="関健太郎">関健太郎</option>
+                <option value="三木清雅" >三木清雅</option>
+                <option value="鈴木淳">鈴木淳</option>
+                <option value="瀬戸秀穂">瀬戸秀穂</option>
+                <option value="橋本光平">橋本光平</option>
+                <option value="伊左治美奈">伊左治美奈</option>
+                <option value="木野田拓也">木野田拓也</option>
+            </select><br />
+            日付：<input type="date" name="date"><br />
+            
+            時刻：<input type="time" name="time"><br />
+            ※日付、時刻は打刻時刻と異なる場合のみ入力<br />
+        
+            早退：
+            <input type="radio" name="soutai" value="通常" checked>通常
+            <input type="radio" name="soutai" value="早退" >早退<br />
+            ※休暇、遅刻、早退場合は理由を記入<br />
+            <input type="text" name="comment" size="30" value="" /><br />
+            <input type="button" value="名前保存" onClick="setck()"><br /><br />
+            
+            業務内容<br />
+           時間<select name="g1time">
+                <option value="午前" selected>午前</option>
+                <option value="午後">午後</option>
+                <option value="終日" >終日</option>
+                <option value="その他">その他</option>
+            </select>
+            業務名<input type="text" name="g1name" size="15" value="" />　
+            時間<select name="g1time">
+                <option value="午前" selected>午前</option>
+                <option value="午後">午後</option>
+                <option value="終日" >終日</option>
+                <option value="その他">その他</option>
+            </select><br />
+            内容・成果：<input type="text" name="g1comment" size="30" value="" /><br />
+           <br />
+           
+            業務名<input type="text" name="g2name" size="15" value="" />　
+            時間<select name="g2time">
+                <option value="午前" selected>午前</option>
+                <option value="午後">午後</option>
+                <option value="終日" >終日</option>
+                <option value="その他">その他</option>
+            </select><br />
+            内容・成果：<input type="text" name="g2comment" size="30" value="" /><br />
+           <br />
+           
+           業務名<input type="text" name="g3name" size="15" value="" />　
+           時間<select name="g3time">
+                <option value="午前" selected>午前</option>
+                <option value="午後">午後</option>
+                <option value="終日" >終日</option>
+                <option value="その他">その他</option>
+            </select><br />
+            内容・成果：<input type="text" name="g3comment" size="30" value="" /><br />
+           <br />
+           
+           業務名<input type="text" name="g4name" size="15" value="" />　
+           時間<select name="g4time">
+                <option value="午前" selected>午前</option>
+                <option value="午後">午後</option>
+                <option value="終日" >終日</option>
+                <option value="その他">その他</option>
+            </select><br />
+            内容・成果：<input type="text" name="g4comment" size="30" value="" /><br />
+           <br />
+          <input type="button" value="業務内容保存" onClick="setck4()">
+          <input type="button" value="読込" onClick="getck4()"><br /><br />
+           <input type="submit" name="submit" value="登録する" /> <br />
+
+            </form>
+
+        <br /><A href="syukkin.html">出勤入力</A><br />
+        <A href="index.html">ホーム</A><br />
+    </body>
+
