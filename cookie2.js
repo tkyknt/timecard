@@ -81,32 +81,29 @@
         }
         
         
-        function naiset(flag1,flag2)
+        function naiset()
             {
-            document.forms[0].time2.disabled = flag1;
-            document.forms[0].chikoku.disabled = flag2;
-            document.forms[0].time.disabled = flag2;
-            document.forms[0].gname.disabled = flag2;
-            document.forms[0].gcomment.disabled = flag2;
-            document.forms[0].comment.required = flag2;
+            document.forms[0].time.readOnly = false;
+            document.forms[0].time2.readOnly = true;
+            document.forms[0].chikoku.readOnly = false;
+            document.forms[0].gname.readOnly = false;
+            document.forms[0].gcomment.readOnly = false;
             }
 
-        function gaiset(flag1,flag2)
+        function gaiset()
             {
-            document.forms[0].time2.disabled = flag2;
-            document.forms[0].chikoku.disabled = flag2;
-            document.forms[0].time.disabled = flag2;
-            document.forms[0].gname.disabled = flag2;
-            document.forms[0].gcomment.disabled = flag2;
-            document.forms[0].comment.required = flag1;
+            document.forms[0].time.readOnly = false;
+            document.forms[0].time2.readOnly = false;
+            document.forms[0].chikoku.readOnly = false;
+            document.forms[0].gname.readOnly = false;
+            document.forms[0].gcomment.readOnly = false;
             }       
             
-         function restset(flag1,flag2)
+         function restset()
             {
-            document.forms[0].time2.disabled = flag1;
-            document.forms[0].chikoku.disabled = flag2;
-            document.forms[0].time.disabled = flag2;
-            document.forms[0].gname.disabled = flag2;
-            document.forms[0].gcomment.disabled = flag2;
-            document.forms[0].comment.required = flag2;
-            }
+            document.forms[0].time.readOnly = true;
+            document.forms[0].time2.readOnly = true;
+            document.forms[0].chikoku.readOnly = true;
+            document.forms[0].gname.readOnly = true;
+            document.forms[0].gcomment.readOnly = true;
+            } 

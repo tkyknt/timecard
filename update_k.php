@@ -8,41 +8,37 @@
         <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
-        <title>入力結果</title>
+        <title>退勤入力完了</title>
 </head>
 <body>
-
+    <h1>退勤入力完了</h1><br />
+    
 <?php
 mb_language("ja");
 mb_internal_encoding("UTF-8");
   require_once 'DSN.php';
   $pdo = new PDO($dsn['host'], $dsn['user'],$dsn['pass']);
-  $st = $pdo -> query("SET NAMES utf8;");
-
-  $sql = "UPDATE kintai SET time_t = :time soutai = :soutai comment_t = :comment WHERE date = :date AND name = :name";
+  $stmt = $pdo -> query("SET NAMES utf8;");
+  
+  if ( ! $_POST['time_t']){
+    $time_t = date('H:i:s');
+    } else {
+    $time_t = $_POST['time_t'];
+    }
+    
+  $sql = 'UPDATE kintai SET time_t = :time_t, soutai = :soutai, comment_t = :comment_t WHERE id = :id';
   $st = $pdo->prepare($sql);
-  $params = array(':time' => $_POST['time'], ':soutai' => $_POST['soutai'], 
-      ':comment' => $_POST['comment'], ':date' => $date,':name' => $_POST['name']);
-  $st->execute($params);
+  $params = array(':time_t' => $time_t, ':soutai' => $_POST['soutai'], ':comment_t' => $_POST['comment_t'], ':id' => $_POST['id']);
+  $st-> execute($params);
 
   print date('Y-m-d H:i:s')."<br />"; 
   print $_POST['name']."<br />";
-  print $_POST['date']."<br />";
-  print $_POST['time']."<br />";
+  print $_POST['time_t']."<br />";
   print $_POST['soutai']."<br />";
-  print $_POST['comment']."<br /><br />";
-  
-  $text = "戻る";
-// リファラ値がなければ<a>タグを挿入しない
-if (empty($_SERVER['HTTP_REFERER'])) {  
-  echo $text;
-}
-// リファラ値があれば<a>タグ内へ
-else {
-  echo '<a href="' . $_SERVER['HTTP_REFERER'] . '">' . $text . "</a>";
-}
+  print $_POST['comment_t']."<br /><br />";
+  print $_POST['id']."<br /><br />";
 ?>
     <br /><A href="index.html">ホーム</A><br />
-
-
+</body>
+</html>
         
