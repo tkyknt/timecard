@@ -11,7 +11,7 @@
         <title>リスト</title>
 </head>
 <body>
-    <div>入力内容抽出(退勤）</div><br />
+    <div>入力内容抽出(日報）</div><br />
 <?php
     mb_language("ja");
     mb_internal_encoding("UTF-8");
@@ -27,8 +27,7 @@
     print $_POST['date1']."～".$_POST['date2']."<br />";
     print "<table border='1'>
     <tr>
-    <th>打刻時刻</th><th>名前</th><th>日付</th><th>時刻</th><th>早退</th>
-    <th>理由</th><th>業務名1</th><th>時間1</th><th>内容1</th>
+    <th>id</th><th>名前</th><th>日付</th><th>業務名1</th><th>時間1</th><th>内容1</th>
     <th>業務名2</th><th>時間2</th><th>内容2</th>
     <th>業務名3</th><th>時間3</th><th>内容3</th>
     <th>業務名4</th><th>時間4</th><th>内容4</th></tr>";
@@ -38,14 +37,14 @@
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
     if ($_POST['name'] == "全員"){
-        $sql = $pdo->prepare("SELECT * FROM taikin WHERE date >= :pdate1 AND date <= :pdate2");
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
             }elseif ( ! $_POST['date1']) {
-        $sql = $pdo->prepare("SELECT * FROM taikin WHERE name LIKE :pname");
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE name LIKE :pname");
         $sql ->bindValue(':pname',$pname);
             } else {
-        $sql = $pdo->prepare("SELECT * FROM taikin WHERE name LIKE :pname
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE name LIKE :pname
                 AND date >= :pdate1 AND date < :pdate2");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
@@ -54,12 +53,9 @@
 
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $ddate = $row['ddate'];
+        $id = $row['id'];
         $name = $row['name'];
         $date = $row['date'];
-        $time = $row['time'];
-        $soutai = $row['soutai'];
-        $comment = $row['comment'];
         $g1name = $row['g1name'];
         $g1time = $row['g1time'];
         $g1comment = $row['g1comment'];
@@ -73,12 +69,9 @@
         $g4time = $row['g4time'];
         $g4comment = $row['g4comment'];
 
-        echo "<td>"."$ddate"."</td>";
+        echo "<td>"."$id"."</td>";
         echo "<td>"."$name"."</td>";
         echo "<td>"."$date"."</td>";
-        echo "<td>"."$time"."</td>";
-        echo "<td>"."$soutai"."</td>";
-        echo "<td>"."$comment"."</td>";
         echo "<td>"."$g1name"."</td>";
         echo "<td>"."$g1time"."</td>";
         echo "<td>"."$g1comment"."</td>";

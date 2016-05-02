@@ -36,7 +36,21 @@ mb_internal_encoding("UTF-8");
   print $_POST['time_t']."<br />";
   print $_POST['soutai']."<br />";
   print $_POST['comment_t']."<br /><br />";
-  print $_POST['id']."<br /><br />";
+  print $_POST['id']."<br /><br /><br />";
+  
+  $sql = $pdo->prepare("SELECT * FROM nippo WHERE name = ? AND date = ?");
+  $sql -> execute(array($_POST['name'], date('Y-m-d')));
+  $ct = 0;
+    while ($rows = $sql->fetch(PDO::FETCH_ASSOC)){
+        $id = $rows["id"];
+        $ct++;
+        }
+$pdo = null;
+ if ($ct == 0 ) {
+    echo "日報が未入力です！<br />><A href='nippo.html'>入力はこちらから</A>";
+}else{
+    echo "本日もお疲れ様でした";
+}
 ?>
     <br /><A href="index.html">ホーム</A><br />
 </body>

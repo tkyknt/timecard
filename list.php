@@ -11,7 +11,7 @@
         <title>リスト</title>
 </head>
 <body>
-    <div>入力内容抽出(出勤）</div><br />
+    <div>入力内容抽出(勤怠）</div><br />
 <?php
     mb_language("ja");
     mb_internal_encoding("UTF-8");
@@ -28,21 +28,21 @@
     print "<table border='1'>
     <tr>
     <th>打刻時刻</th><th>名前</th><th>日付</th><th>開始</th><th>出発</th><th>勤務</th>
-    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th></tr>";
+    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤時刻</th><th>早退</th><th>理由</th></tr>";
     
     //テーブルからすべてのデータを取り出すSQL文を作る
-        $pname ='%'.$_POST['name'].'%';
+        $pname =$_POST['name'];
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
     if ($_POST['name'] == "全員"){
-        $sql = $pdo->prepare("SELECT * FROM syukkin WHERE date >= :pdate1 AND date <= :pdate2");
+        $sql = $pdo->prepare("SELECT * FROM kintai WHERE date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
             }elseif ( ! $_POST['date1']) {
-        $sql = $pdo->prepare("SELECT * FROM syukkin WHERE name LIKE :pname");
+        $sql = $pdo->prepare("SELECT * FROM kintai WHERE name LIKE :pname");
         $sql ->bindValue(':pname',$pname);
             } else {
-        $sql = $pdo->prepare("SELECT * FROM syukkin WHERE name LIKE :pname
+        $sql = $pdo->prepare("SELECT * FROM kintai WHERE name LIKE :pname
                 AND date >= :pdate1 AND date < :pdate2");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
@@ -63,6 +63,9 @@
         $commnet = $row['comment'];
         $gname = $row['gname'];
         $gcomment = $row['gcomment'];
+        $time_t = $row['time_t'];
+        $soutai = $row['soutai'];
+        $comment_t = $row['comment_t'];
         echo "<td>"."$ddate"."</td>";
         echo "<td>"."$name"."</td>";
         echo "<td>"."$date"."</td>";
@@ -72,7 +75,10 @@
         echo "<td>"."$chikoku"."</td>";
         echo "<td>"."$commnet"."</td>";
         echo "<td>"."$gname"."</td>";
-        echo "<td>"."$gcomment"."</td></tr>";
+        echo "<td>"."$gcomment"."</td>";
+        echo "<td>"."$time_t"."</td>";
+        echo "<td>"."$soutai"."</td>";
+        echo "<td>"."$comment_t"."</td></tr>";
         }
     
 print "</table> <br />";
@@ -104,7 +110,6 @@ print "この期間の休暇日数は".$count["休暇"]."日です。 <br />";
 if ($datec != array_unique($datec)) {
 print "重複している日付があります！";
 }
-
 $pdo = null;
 ?>
     <br /><A href="index.html">ホーム</A><br />

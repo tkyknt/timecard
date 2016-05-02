@@ -45,15 +45,7 @@ mb_internal_encoding("UTF-8");
   print $_POST['g4time']."<br />"; 
   print $_POST['g4comment']."<br />"; 
   
-  $text = "戻る";
-// リファラ値がなければ<a>タグを挿入しない
-if (empty($_SERVER['HTTP_REFERER'])) {  
-  echo $text;
-}
-// リファラ値があれば<a>タグ内へ
-else {
-  echo '<a href="' . $_SERVER['HTTP_REFERER'] . '">' . $text . "</a>";
-}
+
 ?>
     <br /><A href="index.html">ホーム</A><br />
 </body>
