@@ -28,7 +28,8 @@
     print "<table border='1'>
     <tr>
     <th>打刻時刻</th><th>名前</th><th>日付</th><th>開始</th><th>出発</th><th>勤務</th>
-    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤時刻</th><th>早退</th><th>理由</th></tr>";
+    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤時刻</th>
+    <th>早退</th><th>理由</th><th>外出出</th><th>外出戻</th></tr>";
     
     //テーブルからすべてのデータを取り出すSQL文を作る
         $pname =$_POST['name'];
@@ -66,6 +67,8 @@
         $time_t = $row['time_t'];
         $soutai = $row['soutai'];
         $comment_t = $row['comment_t'];
+        $time_go = $row['time_go'];
+        $time_gi = $row['time_gi'];
         echo "<td>"."$ddate"."</td>";
         echo "<td>"."$name"."</td>";
         echo "<td>"."$date"."</td>";
@@ -78,7 +81,9 @@
         echo "<td>"."$gcomment"."</td>";
         echo "<td>"."$time_t"."</td>";
         echo "<td>"."$soutai"."</td>";
-        echo "<td>"."$comment_t"."</td></tr>";
+        echo "<td>"."$comment_t"."</td>";
+        echo "<td>"."$time_go"."</td>";
+        echo "<td>"."$time_gi"."</td></tr>";
         }
     
 print "</table> <br />";

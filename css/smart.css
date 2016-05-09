@@ -24,6 +24,18 @@ html{
 
 li{list-style:none;}
 
+table {
+	border-collapse: collapse;
+}
+td {
+	border: solid 1px;
+	padding: 0.5em;
+}
+th {
+	border: solid 1px;
+	padding: 0.5em;
+}
+
 /*----------------------------------------
  全ページ共有ここから
 ----------------------------------------*/
@@ -159,5 +171,6 @@ footer a{
 	-webkit-border-radius:5px 0px 5px 0px;
 	border-radius:5px 0px 5px 0px;
 }
+
 }
 

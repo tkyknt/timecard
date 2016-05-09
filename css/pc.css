@@ -14,4 +14,15 @@ body
 	font-size: 15px ;		/* 文字サイズ */
 	line-height: 1.618 ;	/* 行の高さ */
 }
+table {
+	border-collapse: collapse;
+}
+td {
+	border: solid 1px;
+	padding: 0.5em;
+}
+th {
+	border: solid 1px;
+	padding: 0.5em;
+}
 }   
