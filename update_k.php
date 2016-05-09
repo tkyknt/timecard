@@ -18,7 +18,7 @@ mb_language("ja");
 mb_internal_encoding("UTF-8");
   require_once 'DSN.php';
   $pdo = new PDO($dsn['host'], $dsn['user'],$dsn['pass']);
-  $stmt = $pdo -> query("SET NAMES utf8;");
+  $st = $pdo -> query("SET NAMES utf8;");
   
   if ( ! $_POST['time_t']){
     $time_t = date('H:i:s');
@@ -26,7 +26,8 @@ mb_internal_encoding("UTF-8");
     $time_t = $_POST['time_t'];
     }
     
-  $sql = 'UPDATE kintai SET time_t = :time_t, soutai = :soutai, comment_t = :comment_t WHERE id = :id';
+  $sql = 'UPDATE kintai SET time_t = :time_t, soutai = :soutai, comment_t = :comment_t 
+          WHERE id = :id';
   $st = $pdo->prepare($sql);
   $params = array(':time_t' => $time_t, ':soutai' => $_POST['soutai'], ':comment_t' => $_POST['comment_t'], ':id' => $_POST['id']);
   $st-> execute($params);
