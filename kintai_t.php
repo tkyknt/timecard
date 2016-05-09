@@ -32,20 +32,10 @@ session_destroy();
             早退：
             <input type="radio" name="soutai" value="通常" checked>通常
             <input type="radio" name="soutai" value="早退" >早退<br />
-            ※休暇、遅刻、早退、外出場合は理由を記入<br />
+            ※休暇、遅刻、早退場合は理由を記入<br />
             <input type="text" name="comment_t" size="30" value="" /><br />
            <input type="submit" name="submit" value="登録する" /> <br />
-   </form><br />
-   
-   <br /><h2>外出入力</h2><br />
-   <form action="update_g.php" method="post">
-       <input type ="hidden" name="name" value="<?= $name ?>">
-       <input type ="hidden" name="date" value="<?=  $date ?>">
-       <input type ="hidden" name="id" value="<?=  $id ?>">
-       時刻：<input type="time" name="time_go">～
-       <input type="time" name="time_gi"><br />
-       <input type="submit" name="submit" value="登録する" /> <br />
-       </form><br />
+            </form>
         <A href="index.html">ホーム</A><br />
     </body>
 </html>

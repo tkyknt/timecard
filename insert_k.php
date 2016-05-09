@@ -25,9 +25,9 @@ mb_internal_encoding("UTF-8");
       } else {
       $time = $_POST['time'];
       }
-  $st = $pdo->prepare("INSERT INTO kintai VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+  $st = $pdo->prepare("INSERT INTO kintai VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
   $st->execute(array('',date('Y-m-d H:i:s'),$_POST['name'], $date, $time,$_POST['time2'],
-  $_POST['syukkin'],$_POST['chikoku'],$_POST['comment'], $_POST['gname'], $_POST['gcomment'],'','','','',''));
+  $_POST['syukkin'],$_POST['chikoku'],$_POST['comment'], $_POST['gname'], $_POST['gcomment'],'','',''));
 
 print date('Y-m-d H:i:s')."<br />"; 
 print $_POST['name']."<br />"; 
