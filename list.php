@@ -13,6 +13,7 @@
 <body>
     <div>入力内容抽出(勤怠）</div><br />
 <?php
+//データベース接続
     mb_language("ja");
     mb_internal_encoding("UTF-8");
     require_once 'DSN.php';
@@ -23,15 +24,17 @@
 	} catch (PDOException $e) {
         die($e->getMessage());
 }
+
+//表の出力
     print "名前：".$_POST['name']."<br />";
     print $_POST['date1']."～".$_POST['date2']."<br />";
-    print "<table border='1'>
+    print "<table>
     <tr>
-    <th>打刻時刻</th><th>名前</th><th>日付</th><th>開始</th><th>出発</th><th>勤務</th>
+    <th>名前</th><th>日付</th><th>開始</th><th>出発</th><th>勤務</th>
     <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤時刻</th>
     <th>早退</th><th>理由</th><th>外出出</th><th>外出戻</th></tr>";
     
-    //テーブルからすべてのデータを取り出すSQL文を作る
+    //入力条件に合わせてデータベースから抽出
         $pname =$_POST['name'];
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
@@ -49,7 +52,7 @@
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
         }
-
+        //結果を出力
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
         $ddate = $row['ddate'];
@@ -69,7 +72,6 @@
         $comment_t = $row['comment_t'];
         $time_go = $row['time_go'];
         $time_gi = $row['time_gi'];
-        echo "<td>"."$ddate"."</td>";
         echo "<td>"."$name"."</td>";
         echo "<td>"."$date"."</td>";
         echo "<td>"."$time"."</td>";
@@ -88,6 +90,7 @@
     
 print "</table> <br />";
 
+//出勤日カウント
 $count = array_count_values($syukkinc);
 if( ! array_key_exists("出勤", $count)){
     $count_s = 0;
@@ -105,6 +108,8 @@ if( ! array_key_exists("外勤", $count)){
 $count_g = $count["外勤"];
 }
 $count_sk = $count_s + $count_n + $count_g;
+
+//出勤日出力
 print "この期間の出勤日数は".$count_sk."日です。 <br />";
 if( ! array_key_exists("休暇", $count)){
     print "この期間の休暇日数は0日です。 <br />";
@@ -115,6 +120,7 @@ print "この期間の休暇日数は".$count["休暇"]."日です。 <br />";
 if ($datec != array_unique($datec)) {
 print "重複している日付があります！";
 }
+
 $pdo = null;
 ?>
     <br /><A href="index.html">ホーム</A><br />
