@@ -25,4 +25,12 @@ th {
 	border: solid 1px;
 	padding: 0.5em;
 }
+fieldset {
+margin: 0 0 10px;
+padding: 0px 10px 0px;
+}
+fieldset p {
+margin: 0.5em;
+}
+
 }   

@@ -13,6 +13,7 @@
 <body>
     <h1>本日の出勤状況</h1>
 <?php
+//データベースに接続
     mb_language("ja");
     mb_internal_encoding("UTF-8");
     require_once 'DSN.php';
@@ -24,6 +25,7 @@
         die($e->getMessage());
     }
     
+//日付、社員名準備
     $today = date('Y-m-d');
     $sname[] = "宇野壮春";
     $sname[] = "関健太郎";
@@ -34,12 +36,15 @@
     $sname[] = "伊左治美奈";
     $sname[] = "木野田拓也";
 
+//表の準備
     print "今日の日付:".$today."<br />";
     print "<table>
     <tr>
-    <th>打刻時刻</th><th>名前</th><th>日付</th><th>開始</th><th>出発</th><th>勤務</th>
-    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤時刻</th>
+    <th>名前</th><th>開始</th><th>出発</th><th>勤務</th>
+    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤</th>
     <th>早退</th><th>理由</th><th>外出出</th><th>外出戻</th></tr>";
+    
+//社員名の数だけ1行ずつデータ取り出し表示
     foreach ($sname as $stname) {
         $sql = $pdo->prepare("SELECT * FROM kintai WHERE date = :today AND name = :stname");
         $sql ->bindValue(':today',$today);
@@ -47,42 +52,41 @@
         $sql->execute();
         $ct = 0;
         while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $ddate = $row['ddate'];
-        $name = $row['name'];
-        $date = $row['date'];
-        $time = $row['time'];
-        $time2 = $row['time2'];
-        $syukkin = $row['syukkin'];
-        $chikoku = $row['chikoku'];
-        $commnet = $row['comment'];
-        $gname = $row['gname'];
-        $gcomment = $row['gcomment'];
-        $time_t = $row['time_t'];
-        $soutai = $row['soutai'];
-        $comment_t = $row['comment_t'];
-        $time_go = $row['time_go'];
-        $time_gi = $row['time_gi'];
-        echo "<td>"."$ddate"."</td>";
-        echo "<td>"."$name"."</td>";
-        echo "<td>"."$date"."</td>";
-        echo "<td>"."$time"."</td>";
-        echo "<td>"."$time2"."</td>";
-        echo "<td>"."$syukkin"."</td>";
-        echo "<td>"."$chikoku"."</td>";
-        echo "<td>"."$commnet"."</td>";
-        echo "<td>"."$gname"."</td>";
-        echo "<td>"."$gcomment"."</td>";
-        echo "<td>"."$time_t"."</td>";
-        echo "<td>"."$soutai"."</td>";
-        echo "<td>"."$comment_t"."</td>";
-        echo "<td>"."$time_go"."</td>";
-        echo "<td>"."$time_gi"."</td></tr>";
+            
+        //時刻入力無しはブランク
+        if ($row['time'] == "00:00:00"){$time = "";}
+        else {$time = date("H：i", strtotime($row['time']));}
+        if ($row['time2'] == "00:00:00"){$time2 = "";}
+         else {$time2 = date("H：i", strtotime($row['time2']));}
+        if ($row['time_t'] == "00:00:00"){$time_t = "";}
+         else {$time_t = date("H：i", strtotime($row['time_t']));}
+        if ($row['time_go'] == "00:00:00"){$time_go = "";}
+         else {$time_go = date("H：i", strtotime($row['time_go']));}
+        if ($row['time_gi'] == "00:00:00"){$time_gi = "";}
+         else {$time_gi = date("H：i", strtotime($row['time_gi']));}
+
+        //データの表示
+        echo "<td>",$row['name'];
+        echo "</td><td>",$time;
+        echo "</td><td>",$time2;
+        echo "</td><td>",$row['syukkin'];
+        echo "</td><td>",$row['chikoku'];
+        echo "</td><td>",$row['comment'];
+        echo "</td><td>",$row['gname'];
+        echo "</td><td>",$row['gcomment'];
+        echo "</td><td>",$time_t;
+        echo "</td><td>",$row['soutai'];
+        echo "</td><td>",$row['comment_t'];
+        echo "</td><td>",$time_go;
+        echo "</td><td>",$time_gi,"</td></tr>";
             $ct++;
         }
+        
+        //データ無しの場合未入力表示
         if ($ct == 0 ) {
-            echo '<td style="background:#ffcccc">未入力</td><td>'."$stname"."</td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td><td></td>
-    <td></td><td></td><td></td><td></td></tr>";
+            echo '<td>',$stname,'</td><td style="background:#ffcccc">未入力</td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td></td><td></td><td></td><td></td></tr>';
         }
     }
     print "</table>";

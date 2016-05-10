@@ -11,40 +11,43 @@
         <title>退勤入力</title>
 </head>
 <body>
-        <h1>退勤入力 </h1>
 <?php
 session_start();
-echo "現在：",date('Y年m月d日 H:i'),"<br />";
-echo "名前：",$_SESSION["name"],"<br />";
-echo "本日の出勤時刻：",$_SESSION["time"],"<br />";
+echo "現在時刻：",date('Y年m月d日 H:i');
+echo "<br />本日の出勤時刻：",date("H：i", strtotime($_SESSION["time"]));
+echo "<br />名前：",$_SESSION["name"];
 $name = $_SESSION["name"];
 $date = $_SESSION["date"];
 $id = $_SESSION["id"];
 session_destroy();
 ?>
-
+<br />
    <form action="update_k.php" method="post">
+       <fieldset>
+       <legend>退勤入力</legend>
        <input type ="hidden" name="name" value="<?= $name ?>">
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">
-            時刻：<input type="time" name="time_t"><br />
-            ※時刻は打刻時刻と異なる場合のみ入力<br />
+            退勤時刻：<input type="time" name="time_t">打刻時刻と異なる場合入力<br />
             早退：
             <input type="radio" name="soutai" value="通常" checked>通常
             <input type="radio" name="soutai" value="早退" >早退<br />
-            ※休暇、遅刻、早退、外出場合は理由を記入<br />
+            理由（休暇、遅刻、早退、外出等）<br />
             <input type="text" name="comment_t" size="30" value="" /><br />
-           <input type="submit" name="submit" value="登録する" /> <br />
-   </form><br />
-   
-   <br /><h2>外出入力</h2><br />
-   <form action="update_g.php" method="post">
+           <input type="submit" name="submit" value="登録" /> <br />
+        </fieldset>  
+   </form>
+
+    <form action="update_g.php" method="post">
+       <fieldset>
+       <legend>外出入力</legend>
        <input type ="hidden" name="name" value="<?= $name ?>">
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">
        時刻：<input type="time" name="time_go">～
        <input type="time" name="time_gi"><br />
-       <input type="submit" name="submit" value="登録する" /> <br />
+       <input type="submit" name="submit" value="登録" /> <br />
+       </fieldset>
        </form><br />
         <A href="index.html">ホーム</A><br />
     </body>
