@@ -77,7 +77,7 @@ session_destroy()
         </fieldset>   
           <input type="button" value="業務予定保存" onClick="setck3()">
           <input type="button" value="読込" onClick="getck3()"><br />
-          <input type="submit" name="submit" value="登録" /><br />
+          <input type="submit" name="submit" value="出勤" /><br />
           </form>
     <A href="index.html">ホーム</A><br />
     </body>

@@ -34,7 +34,7 @@ session_destroy();
             <input type="radio" name="soutai" value="早退" >早退<br />
             理由（休暇、遅刻、早退、外出等）<br />
             <input type="text" name="comment_t" size="30" value="" /><br />
-           <input type="submit" name="submit" value="登録" /> <br />
+           <input type="submit" name="submit" value="退勤" /> <br />
         </fieldset>  
    </form>
 
@@ -46,7 +46,7 @@ session_destroy();
        <input type ="hidden" name="id" value="<?=  $id ?>">
        時刻：<input type="time" name="time_go">～
        <input type="time" name="time_gi"><br />
-       <input type="submit" name="submit" value="登録" /> <br />
+       <input type="submit" name="submit" value="外出" /> <br />
        </fieldset>
        </form><br />
         <A href="index.html">ホーム</A><br />
