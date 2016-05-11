@@ -15,14 +15,13 @@
         <title>kintai</title>
         <script type="text/javascript" src="cookie.js"></script>
     </head>
-    <body> 
-    <h1>フォーエム出勤簿 </h1><br />
-    現在時刻： <script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
+    <body onLoad= "getck()"> 
+    <h1>フォーエム出勤簿 </h1>
+    <p><script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
             // -->
- </SCRIPT><br />
+     </SCRIPT></p>
             <form action="kintai.php" method="post">
-            名前：
-            <select name="name">
+            <p><select name="name">
                 <option value="宇野壮春" selected>宇野壮春</option>
                 <option value="関健太郎">関健太郎</option>
                 <option value="三木清雅" >三木清雅</option>
@@ -32,13 +31,12 @@
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
             </select><br />
-            <input type="submit" name="submit" value="勤怠入力" /> <br />
+            <input type="submit" name="submit" onClick="setck()" value="タイムカード" /></p>
                </form>
-    <A href="nippo.html">日報入力</A><br />
-    <A href="list.html">入力内容抽出(勤怠）</A><br />
-    <A href="list_n.html">入力内容抽出(日報）</A><br />
-    <A href="today.php">本日の出勤状況</A><br />
-    
-
+    <p><A href="kintai_d.php">勤怠日付入力</A></p>
+    <p><A href="nippo.html">日報入力</A></p>
+    <p><A href="list.html">入力内容抽出(勤怠）</A></p>
+    <p><A href="list_n.html">入力内容抽出(日報）</A></p>
+    <p><A href="today.php">本日の出勤状況</A></p>
     </body>
 

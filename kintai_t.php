@@ -13,15 +13,14 @@
 <body>
 <?php
 session_start();
+echo "<div id='header'>",$_SESSION["name"],"<br />";
 echo "現在時刻：",date('Y年m月d日 H:i');
-echo "<br />本日の出勤時刻：",date("H：i", strtotime($_SESSION["time"]));
-echo "<br />名前：",$_SESSION["name"];
+echo "<br />本日の出勤時刻：",date("H：i", strtotime($_SESSION["time"])),"</div>";
 $name = $_SESSION["name"];
 $date = $_SESSION["date"];
 $id = $_SESSION["id"];
 session_destroy();
 ?>
-<br />
    <form action="update_k.php" method="post">
        <fieldset>
        <legend>退勤入力</legend>

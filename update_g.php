@@ -25,11 +25,10 @@ mb_internal_encoding("UTF-8");
   $params = array(':time_go' => $_POST['time_go'], ':time_gi' => $_POST['time_gi'], 
       ':id' => $_POST['id']);
   $st-> execute($params);
-  print date('Y-m-d H:i:s')."<br />"; 
-  print $_POST['name']."<br />";
-  print $_POST['time_go']."～";
-  print $_POST['time_gi']."<br />";
-  
+  echo date('Y年m月d日'),"<br />";
+  echo $_POST['name'];
+  echo "<br />外出：", $_POST['time_go'], "～", $_POST['time_gi'],"<br />";
+  $pdo = null;
 ?>
     <br /><A href="index.html">ホーム</A><br />
 </body>

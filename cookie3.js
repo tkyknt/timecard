@@ -1,9 +1,6 @@
             ckary = new Array();
-            
             function setck(){
             ckary[0] = document.forms[0].name.value;
-            ckary[1] = document.forms[0].comment.value;
-
             exp=new Date();
             exp.setTime(exp.getTime()+10000*60*60*24*1);
             ckstr = escape(ckary[0]);
@@ -29,7 +26,6 @@
             }
             ckary = ckstr.split("%00");
             if (ckary[0]) document.forms[0].name.value = unescape(ckary[0]);
-            if (ckary[1]) document.forms[0].comment.value = unescape(ckary[1]);
             }
             
             

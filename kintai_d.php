@@ -10,32 +10,48 @@
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
         <!-- ※スマートフォン用のスタイル（smart.css） -->
         <title>出勤入力</title>
-        <script type="text/javascript" src="cookie2.js"></script>
+        <script type="text/javascript" src="cookie4.js"></script>
     </head>
-    <body>
-        <h1>出勤入力 </h1>
-<?php
-session_start();
-echo "<div id='header'>",$_SESSION["name"],"<br />";
-echo date('Y年m月d日 H:i'),"</div>";
-session_destroy()
-?>
-        <form action="insert_k.php" method="post">
+    <body onLoad= "getck()">
+        <h1>勤怠日付入力 </h1>
+
+        <form action="insert_d.php" method="post">
+            <p>名前：
+            <select name="name">
+                <option value="宇野壮春" selected>宇野壮春</option>
+                <option value="関健太郎">関健太郎</option>
+                <option value="三木清雅" >三木清雅</option>
+                <option value="鈴木淳">鈴木淳</option>
+                <option value="瀬戸秀穂">瀬戸秀穂</option>
+                <option value="橋本光平">橋本光平</option>
+                <option value="伊左治美奈">伊左治美奈</option>
+                <option value="木野田拓也">木野田拓也</option>
+            </select></p>
+            <p>日付：<input type ="date" name="date"></p>
+            
         <fieldset>
-            <legend>勤怠</legend>
-            <input type ="hidden" name="name" value="<?= $_SESSION["name"] ?>">
+            <legend>勤怠入力</legend>
             <p>出勤休暇：
             <input type="radio" name="syukkin" onClick="naiset()" value="内勤" checked>内勤
             <input type="radio" name="syukkin" onClick="gaiset()" value="外勤" >外勤
             <input type="radio" name="syukkin" onClick="restset()" value="休暇" >休暇</p>
-            <p>遅刻：　　　
+            <p>遅刻：
             <input type="radio" name="chikoku" value="通常" checked>通常
             <input type="radio" name="chikoku" value="遅刻" >遅刻</p>
-            <p>開始時刻：<input type="time" name="time">（打刻時刻と異なる場合は入力）</p>
+            <p>早退：
+            <input type="radio" name="soutai" value="通常" checked>通常
+            <input type="radio" name="soutai" value="早退" >早退</p>
+            <p>開始時刻：<input type="time" name="time"></p>
             <p>出発時刻：<input type="time" name="time2" value= "" readonly>（外勤のみ入力）</p>
+            <p>退勤時刻：<input type="time" name="time_t"></p>
             <p>理由欄（遅刻、休暇等）<br />
             <input type="text" name="comment" size="30" value="" /></p>
+            <p>理由（早退、外出等）<br />
+            <input type="text" name="comment_t" size="30" value="" /></p>
+            <p>外出：<input type="time" name="time_go">～
+            <input type="time" name="time_gi"></p>
         </fieldset>
+            
         <fieldset>
             <legend>業務予定</legend>
             <p>主な業務　<select name="gname">
@@ -72,12 +88,11 @@ session_destroy()
                 
                 <option value="その他">その他</option>
             </select></p>
-            
             <p>内容<br /><textarea name="gcomment" cols="30" rows="2"></textarea></p>
         </fieldset>   
-          <input type="button" value="業務予定保存" onClick="setck3()">
-          <input type="button" value="読込" onClick="getck3()"><br />
-          <input type="submit" name="submit" value="出勤" /><br />
+          <input type="button" value="内容保存" onClick="setck_d()">
+          <input type="button" value="読込" onClick="getck_d()"><br />
+          <input type="submit" name="submit"  onClick="setck()" value="登録" /><br />
           </form>
     <A href="index.html">ホーム</A><br />
     </body>

@@ -8,10 +8,10 @@
         <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
-        <title>出勤入力完了</title>
+        <title>勤怠入力完了</title>
 </head>
 <body>
-    <h1>出勤入力完了</h1><br />
+    <h1>勤怠入力完了</h1><br />
     
 <?php
 mb_language("ja");
@@ -19,26 +19,27 @@ mb_internal_encoding("UTF-8");
   require_once 'DSN.php';
   $pdo = new PDO($dsn['host'], $dsn['user'],$dsn['pass']);
   $st = $pdo -> query("SET NAMES utf8;");
-  $date = date('Y-m-d');
-  if ( ! $_POST['time']){
-      $time = date('H:i:s');
-      } else {
-      $time = $_POST['time'];
-      }
+
   $st = $pdo->prepare("INSERT INTO kintai VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-  $st->execute(array('',date('Y-m-d H:i:s'),$_POST['name'], $date, $time,$_POST['time2'],
-  $_POST['syukkin'],$_POST['chikoku'],$_POST['comment'], $_POST['gname'], $_POST['gcomment'],'','','','',''));
+  $st->execute(array('',date('Y-m-d H:i:s'),$_POST['name'], $_POST['date'],
+      $_POST['time'],$_POST['time2'], $_POST['syukkin'],$_POST['chikoku'],
+      $_POST['comment'], $_POST['gname'], $_POST['gcomment'], $_POST['time_t'],
+      $_POST['soutai'],$_POST['comment_t'],$_POST['time_go'], $_POST['time_gi']));
 
 echo '打刻：',date('Y-m-d H:i:s')."<br />"; 
 echo $_POST['name'],"<br />日付："; 
-echo $date,"<br />出勤時刻：";
-echo $time,"<br />出発時刻：";
-echo $_POST['time2'],"<br />出勤：";
+echo $_POST['date'],"<br />出勤時刻：";
+echo $_POST['time'],"<br />出発時刻：";
+echo $_POST['time2'],"<br />退勤時刻：";
+echo $_POST['time_t'],"<br />出勤：";
 echo $_POST['syukkin'],"<br />遅刻：";
-echo $_POST['chikoku'],"<br />理由：";
-echo $_POST['comment'],"<br />業務名：";
+echo $_POST['chikoku'],"<br />早退：";
+echo $_POST['soutai'],"<br />理由１：";
+echo $_POST['comment'],"<br />理由２：";
+echo $_POST['comment_t'],"<br />業務名：";
 echo $_POST['gname'],"<br />業務内容：";
-echo $_POST['gcomment'];
+echo $_POST['gcomment'],"<br />外出：";
+echo $_POST['time_go'],"～",$_POST['time_gi'],"<br />";
 $pdo = null;
 ?>
     <br /><A href="index.html">ホーム</A><br />

@@ -10,11 +10,11 @@
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
         <!-- ※スマートフォン用のスタイル（smart.css） -->
-        <title>退勤一覧</title>
+        <script type="text/javascript" src="cookie.js"></script>
+        <title>日報一覧</title>
     </head>
-    <body>
-        <div>入力内容抽出(退勤）</div>
-    <br /> <br />
+    <body onLoad= "getck()"> 
+        <h1>日報閲覧</h1>
         <form action="list_n.php" method="post">
             名前：
             <select name="name">
@@ -31,11 +31,8 @@
             始め：<input type="date" name="date1" ><br />
             終わり：<input type="date" name="date2" ><br />
 
-           <input type="submit" name="submit" value="抽出" /><br />
+           <input type="submit" name="submit" onClick="setck()" value="抽出" /><br />
             </form>
-        <br /><A href="list.html">出勤一覧はこちら</A><br />
-        <A href="taikin.html">退勤入力はこちら</A><br />
-          <A href="syukkin.html">出勤入力はこちら</A><br />
           <A href="index.html">ホーム</A><br />
     </body>
 </html>

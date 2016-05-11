@@ -12,8 +12,8 @@
         <!-- ※スマートフォン用のスタイル（smart.css） -->
         <title>日報入力</title>
         <script type="text/javascript" src="cookie3.js"></script>
-<body>
-    <h1>退勤入力</h1>
+<body onLoad = "getck()" onLoad = "gettoday()">
+    <h1>日報入力</h1>
         <form action="nippo.php" method="post">
             名前：
             <select name="name">
@@ -28,50 +28,189 @@
             </select><br />
             日付：<input type="date" name="date"><br />
 
-            業務内容<br />
-            業務名<input type="text" name="g1name" size="15" value="" />　
+            <fieldset>
+            <legend>業務内容</legend>
+            <p>業務名<select name="g1name">
+                <option value=""></option>
+                <option value="社内業務">社内業務</option>
+                
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="環境省シカ調査">環境省シカ調査</option>
+                </optgroup>
+                
+                <option value="その他">その他</option>
+            </select>
             時間<select name="g1time">
+                <option value=""></option>
                 <option value="午前" selected>午前</option>
                 <option value="午後">午後</option>
                 <option value="終日" >終日</option>
                 <option value="その他">その他</option>
             </select><br />
-            内容・成果：<input type="text" name="g1comment" size="30" value="" /><br />
-           <br />
+            内容・成果：<input type="text" name="g1comment" size="30" value="" /></p>
            
-            業務名<input type="text" name="g2name" size="15" value="" />　
+           
+            <p>業務名<select name="g2name">
+                <option value=""></option>
+                <option value="社内業務">社内業務</option>
+                
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="環境省シカ調査">環境省シカ調査</option>
+                </optgroup>
+                
+                <option value="その他">その他</option>
+            </select>
             時間<select name="g2time">
+                <option value=""></option>
                 <option value="午前" selected>午前</option>
                 <option value="午後">午後</option>
                 <option value="終日" >終日</option>
                 <option value="その他">その他</option>
             </select><br />
-            内容・成果：<input type="text" name="g2comment" size="30" value="" /><br />
-           <br />
+            内容・成果：<input type="text" name="g2comment" size="30" value="" /></p>
            
-           業務名<input type="text" name="g3name" size="15" value="" />　
-           時間<select name="g3time">
+            <p>業務名<select name="g3name">
+                <option value=""></option>    
+                <option value="社内業務">社内業務</option>
+                
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="環境省シカ調査">環境省シカ調査</option>
+                </optgroup>
+                
+                <option value="その他">その他</option>
+            </select>
+            時間<select name="g3time">
+                <option value=""></option>
                 <option value="午前" selected>午前</option>
                 <option value="午後">午後</option>
                 <option value="終日" >終日</option>
                 <option value="その他">その他</option>
             </select><br />
-            内容・成果：<input type="text" name="g3comment" size="30" value="" /><br />
-           <br />
+            内容・成果：<input type="text" name="g3comment" size="30" value="" /></p>
            
-           業務名<input type="text" name="g4name" size="15" value="" />　
-           時間<select name="g4time">
+            <p>業務名<select name="g4name">
+                <option value=""></option>
+                <option value="社内業務">社内業務</option>
+                
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="環境省シカ調査">環境省シカ調査</option>
+                </optgroup>
+                
+                <option value="その他">その他</option>
+            </select>
+            時間<select name="g4time">
+                <option value=""></option>
                 <option value="午前" selected>午前</option>
                 <option value="午後">午後</option>
                 <option value="終日" >終日</option>
                 <option value="その他">その他</option>
             </select><br />
-            内容・成果：<input type="text" name="g4comment" size="30" value="" /><br />
-           <br />
-          <input type="button" value="業務内容保存" onClick="setck4()">
-          <input type="button" value="読込" onClick="getck4()"><br /><br />
-           <input type="submit" name="submit" value="登録する" /> <br />
+            内容・成果：<input type="text" name="g4comment" size="30" value="" /></p>
 
+          <input type="button" value="業務内容保存" onClick="setck4()">
+          <input type="button" value="読込" onClick="getck4()"><br />
+           <input type="submit" name="submit" onClick="setck()" value="登録する" /> <br />
+</fieldset> 
             </form>
 
         <br /><A href="syukkin.html">出勤入力</A><br />

@@ -31,12 +31,11 @@ mb_internal_encoding("UTF-8");
   $params = array(':time_t' => $time_t, ':soutai' => $_POST['soutai'], ':comment_t' => $_POST['comment_t'], ':id' => $_POST['id']);
   $st-> execute($params);
 
-  print date('Y-m-d H:i:s')."<br />"; 
-  print $_POST['name']."<br />";
-  print $_POST['time_t']."<br />";
-  print $_POST['soutai']."<br />";
+  print date('Y-m-d')."<br />"; 
+  print $_POST['name']."<br />退勤時刻：";
+  print $_POST['time_t']."<br />早退：";
+  print $_POST['soutai']."<br />理由：";
   print $_POST['comment_t']."<br /><br />";
-  print $_POST['id']."<br /><br /><br />";
   
   $sql = $pdo->prepare("SELECT * FROM nippo WHERE name = ? AND date = ?");
   $sql -> execute(array($_POST['name'], date('Y-m-d')));

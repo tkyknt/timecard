@@ -10,11 +10,11 @@
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
         <!-- ※スマートフォン用のスタイル（smart.css） -->
+        <script type="text/javascript" src="cookie.js"></script>
         <title>出勤一覧</title>
     </head>
-    <body>
-        <div>入力内容抽出(出勤）</div>
-    <br /> <br />
+    <body onLoad= "getck()"> 
+       <h1>勤怠閲覧</h1>
         <form action="list.php" method="post">
             名前：
             <select name="name">
@@ -31,7 +31,7 @@
             始め：<input type="date" name="date1" ><br />
             終わり：<input type="date" name="date2" ><br />
 
-           <input type="submit" name="submit" value="抽出" /><br />
+           <input type="submit" name="submit" onClick="setck()" value="抽出" /><br />
             </form>
         <A href="index.html">ホーム</A><br />
     </body>
