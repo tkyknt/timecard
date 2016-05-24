@@ -39,15 +39,15 @@
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
     if ($_POST['name'] == "全員"){
-        $sql = $pdo->prepare("SELECT * FROM kintai WHERE date >= :pdate1 AND date <= :pdate2");
+        $sql = $pdo->prepare("SELECT * FROM kintai WHERE date >= :pdate1 AND date <= :pdate2 ORDER BY date");
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
             }elseif ( ! $_POST['date1']) {
-        $sql = $pdo->prepare("SELECT * FROM kintai WHERE name LIKE :pname");
+        $sql = $pdo->prepare("SELECT * FROM kintai WHERE name LIKE :pname ORDER BY date");
         $sql ->bindValue(':pname',$pname);
             } else {
         $sql = $pdo->prepare("SELECT * FROM kintai WHERE name LIKE :pname
-                AND date >= :pdate1 AND date < :pdate2");
+                AND date >= :pdate1 AND date < :pdate2 ORDER BY date");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
