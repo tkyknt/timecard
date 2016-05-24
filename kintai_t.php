@@ -39,7 +39,7 @@ session_destroy();
 
     <form action="update_g.php" method="post">
        <fieldset>
-       <legend>外出入力</legend>
+       <legend>外出（業務外）入力</legend>
        <input type ="hidden" name="name" value="<?= $name ?>">
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">

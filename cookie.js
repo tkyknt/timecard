@@ -2,7 +2,7 @@
             function setck(){
             ckary[0] = document.forms[0].name.value;
             exp=new Date();
-            exp.setTime(exp.getTime()+10000*60*60*24*1);
+            exp.setTime(exp.getTime()+365000*60*60*24*1);
             ckstr = escape(ckary[0]);
             i = 1;
             while (ckary[i]){

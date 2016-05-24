@@ -23,29 +23,37 @@ mb_internal_encoding("UTF-8");
       } else {
           $date = $_POST['date'];
       }
-  $st = $pdo->prepare("INSERT INTO nippo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+  $st = $pdo->prepare("INSERT INTO nippo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
   $st->execute(array('',$_POST['name'], $date,
-  $_POST['g1name'],$_POST['g1time'],$_POST['g1comment'],
-  $_POST['g2name'],$_POST['g2time'],$_POST['g2comment'],
-  $_POST['g3name'],$_POST['g3time'],$_POST['g3comment'],
-  $_POST['g4name'],$_POST['g4time'],$_POST['g4comment']));
+  $_POST['g1name'],$_POST['kinmu1'],$_POST['g1time'],$_POST['g1comment'],
+  $_POST['g2name'],$_POST['kinmu2'],$_POST['g2time'],$_POST['g2comment'],
+  $_POST['g3name'],$_POST['kinmu3'],$_POST['g3time'],$_POST['g3comment'],
+  $_POST['g4name'],$_POST['kinmu4'],$_POST['g4time'],$_POST['g4comment']));
   
   print $_POST['name']."<br />";
   print $_POST['date']."<br />";
-  print $_POST['g1name']." 時間："; 
+  
+  print $_POST['g1name']."<br />"; 
+  print $_POST['kinmu1']." 時間：";
   print $_POST['g1time']."<br />"; 
   print $_POST['g1comment']."<br />"; 
-  print $_POST['g2name']." 時間："; 
+  
+  print $_POST['g2name']."<br />"; 
+  print $_POST['kinmu2']." 時間：";
   print $_POST['g2time']."<br />"; 
   print $_POST['g2comment']."<br />"; 
-  print $_POST['g3name']." 時間："; 
+  
+  print $_POST['g3name']."<br />"; 
+  print $_POST['kinmu3']." 時間：";
   print $_POST['g3time']."<br />"; 
   print $_POST['g3comment']."<br />"; 
-  print $_POST['g4name']." 時間："; 
-  print $_POST['g4time']."<br />"; 
-  print $_POST['g4comment']."<br />"; 
-  
 
+  print $_POST['g4name']."<br />"; 
+  print $_POST['kinmu4']." 時間：";
+  print $_POST['g4time']."<br />"; 
+  print $_POST['g4comment']."<br />";   
+  
+$pdo = null;
 ?>
     <br /><A href="index.html">ホーム</A><br />
 </body>

@@ -2,7 +2,7 @@
             function setck(){
             ckary[0] = document.forms[0].name.value;
             exp=new Date();
-            exp.setTime(exp.getTime()+10000*60*60*24*1);
+            exp.setTime(exp.getTime()+365000*60*60*24*1);
             ckstr = escape(ckary[0]);
             i = 1;
             while (ckary[i]){
@@ -40,7 +40,7 @@
                 ckary3[7] = document.forms[0].gname.value;
                 ckary3[8] = document.forms[0].gcomment.value;
                 exp=new Date();
-                exp.setTime(exp.getTime()+10000*60*60*24*1);
+                exp.setTime(exp.getTime()+365000*60*60*24*1);
                 ckstr3 = escape(ckary3[0]);
                 i = 1;
                 while (ckary3[i]){

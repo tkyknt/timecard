@@ -31,7 +31,7 @@
             
         <fieldset>
             <legend>勤怠入力</legend>
-            <p>出勤休暇：
+            <p>勤怠：
             <input type="radio" name="syukkin" onClick="naiset()" value="内勤" checked>内勤
             <input type="radio" name="syukkin" onClick="gaiset()" value="外勤" >外勤
             <input type="radio" name="syukkin" onClick="restset()" value="休暇" >休暇</p>
@@ -55,7 +55,7 @@
         <fieldset>
             <legend>業務予定</legend>
             <p>主な業務　<select name="gname">
-                <option value="社内業務">社内業務</option>
+                <option value="会社業務">会社業務</option>
                 
                 <optgroup label="サル">
                 <option value="仙台市サル調査">仙台市サル調査</option>
