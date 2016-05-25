@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
+        <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
+        <!-- ※デフォルトのスタイル（style.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
+        <!-- ※タブレット用のスタイル（tablet.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
+        <!-- ※スマートフォン用のスタイル（smart.css） -->
+        <script type="text/javascript" src="cookie.js"></script>
+        <title>日報一覧（業務別）</title>
+    </head>
+    <body onLoad= "getck()"> 
+        <h1>日報一覧（業務別）</h1>
+        <form action="list_ng.php" method="post">
+            <p>業務名：<select name="gname">
+                <option value=""></option>
+                <option value="会社業務">会社業務</option>
+                
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="環境省シカ調査">環境省シカ調査</option>
+                </optgroup>
+                
+                <option value="その他">その他</option>
+                </select></p>
+            
+            <p>並び替え：<select name="sort">
+                <option value="date" selected>日付</option>
+                <option value="name">名前</option>
+                <option value="kinmu">勤務</option>
+                <option value="gcomment">内容</option>
+            </select></p>
+            
+            <p>開始：<input type="date" name="date1" ><br />
+            終了：<input type="date" name="date2" ></p>
+
+           <input type="submit" name="submit" onClick="setck()" value="抽出" /><br />
+            </form>
+          <A href="index.html">ホーム</A><br />
+    </body>
+</html>

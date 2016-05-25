@@ -1,3 +1,9 @@
+<?php
+session_start();
+echo "<div id='header'>",$_SESSION["name"],"<br />";
+echo date('Y年m月d日 H:i'),"</div>";
+session_destroy();
+?>
 <html lang="ja">
     <head>
         <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
@@ -13,13 +19,9 @@
         <script type="text/javascript" src="cookie2.js"></script>
     </head>
     <body>
+
         <h1>出勤入力 </h1>
-<?php
-session_start();
-echo "<div id='header'>",$_SESSION["name"],"<br />";
-echo date('Y年m月d日 H:i'),"</div>";
-session_destroy()
-?>
+
         <form action="insert_k.php" method="post">
         <fieldset>
             <legend>勤怠</legend>

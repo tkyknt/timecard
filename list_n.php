@@ -11,7 +11,7 @@
         <title>リスト</title>
 </head>
 <body>
-    <div>入力内容抽出(日報）</div><br />
+    <div>日報一覧（名前別）</div><br />
 <?php
     mb_language("ja");
     mb_internal_encoding("UTF-8");

@@ -5,5 +5,3 @@ $dsn = array(
     'user' => 'root',
     'pass' => 'fmcom'
     );
-?>
-

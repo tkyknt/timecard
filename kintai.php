@@ -1,5 +1,5 @@
 <?php
-//データベース接続
+session_start();
     mb_language("ja");
     mb_internal_encoding("UTF-8");
     require_once 'DSN.php';
@@ -9,7 +9,7 @@
 //本日の入力を抽出
     $sql = $pdo->prepare("SELECT * FROM kintai WHERE name = ? AND date = ?");
     $sql -> execute(array($_POST['name'], date('Y-m-d')));
-    session_start();
+
     $ct = 0;
     while ($rows = $sql->fetch(PDO::FETCH_ASSOC)){
         $_SESSION["id"] = $rows["id"];
@@ -30,5 +30,6 @@ if ($ct == 0 ) {
     header('Location: kintai_s.php');
 }else{
     header('Location: kintai_t.php');
+exit();
 }
 ?>

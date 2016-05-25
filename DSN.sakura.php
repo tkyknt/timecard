@@ -4,5 +4,3 @@ $dsn = array(
     'user' => 'four-m',
     'pass' => 'ke02nn14'
     );
-?>
-

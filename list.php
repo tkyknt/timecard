@@ -11,7 +11,7 @@
         <title>リスト</title>
 </head>
 <body>
-    <div>入力内容抽出(勤怠）</div><br />
+    <div>勤怠一覧</div><br />
 <?php
 //データベース接続
     mb_language("ja");

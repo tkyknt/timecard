@@ -8,7 +8,7 @@
         <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
-        <title>入力結果</title>
+        <title>本日の出勤状況</title>
 </head>
 <body>
     <h1>本日の出勤状況</h1>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -12,7 +15,6 @@
 </head>
 <body>
 <?php
-session_start();
 echo "<div id='header'>",$_SESSION["name"],"<br />";
 echo "現在時刻：",date('Y年m月d日 H:i');
 echo "<br />本日の出勤時刻：",date("H：i", strtotime($_SESSION["time"])),"</div>";
