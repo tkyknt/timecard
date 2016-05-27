@@ -92,8 +92,10 @@
         </fieldset>   
           <input type="button" value="内容保存" onClick="setck_d()">
           <input type="button" value="読込" onClick="getck_d()"><br />
-          <input type="submit" name="submit"  onClick="setck()" value="登録" /><br />
+          <input type="submit" name="submit"  onClick="setck()" value="登録" />
           </form>
-    <A href="index.html">ホーム</A><br />
+        
+    <p><A href="index.html">ホーム</A></p>
+
     </body>
 </html>

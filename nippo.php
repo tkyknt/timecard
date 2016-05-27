@@ -55,7 +55,8 @@ mb_internal_encoding("UTF-8");
   
 $pdo = null;
 ?>
-    <br /><A href="index.html">ホーム</A><br />
+    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="index.html">ホーム</A></p>
 </body>
 </html>
         

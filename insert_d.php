@@ -42,7 +42,8 @@ echo $_POST['gcomment'],"<br />外出：";
 echo $_POST['time_go'],"～",$_POST['time_gi'],"<br />";
 $pdo = null;
 ?>
-    <br /><A href="index.html">ホーム</A><br />
+    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="index.html">ホーム</A></p>
 </body>
 </html>
         

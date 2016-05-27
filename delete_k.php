@@ -26,9 +26,10 @@ mb_internal_encoding("UTF-8");
   $pdo = null;
 ?>
     レコードを削除しました
-    <br /><A href="list.html">勤怠抽出</A><br />
-    <A href="kintai_d.html">勤怠日付入力</A><br />
-    <A href="index.html">ホーム</A><br />
+    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="list.html">勤怠抽出</A></p>
+    <p><A href="kintai_d.html">勤怠日付入力</A></p>
+    <p><A href="index.html">ホーム</A></p>
 </body>
 </html>
         

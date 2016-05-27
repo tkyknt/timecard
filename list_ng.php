@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
         <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
@@ -34,7 +34,6 @@ $list = array();
         $gname =$_POST['gname'];
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
-        $i = 0;
     
     //日付指定なしの場合
     if ( ! $_POST['date1']) {
@@ -42,40 +41,48 @@ $list = array();
         $sql ->bindValue(':gname',$gname);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu1'], 
             "gtime" => $row['g1time'], "gcomment" => $row['g1comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu1'];
+        $gtime[] = $row['g1time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g2name = :gname");
         $sql ->bindValue(':gname',$gname);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu2'], 
             "gtime" => $row['g2time'], "gcomment" => $row['g2comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu2'];
+        $gtime[] = $row['g2time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g3name = :gname");
         $sql ->bindValue(':gname',$gname);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu3'], 
             "gtime" => $row['g3time'], "gcomment" => $row['g3comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu3'];
+        $gtime[] = $row['g3time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g4name = :gname");
         $sql ->bindValue(':gname',$gname);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu4'], 
             "gtime" => $row['g4time'], "gcomment" => $row['g4comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu4'];
+        $gtime[] = $row['g4time'];
         }
         
             }
@@ -88,10 +95,12 @@ $list = array();
         $sql ->bindValue(':pdate2',$pdate2);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu1'], 
             "gtime" => $row['g1time'], "gcomment" => $row['g1comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu1'];
+        $gtime[] = $row['g1time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g2name = :gname
@@ -101,10 +110,12 @@ $list = array();
         $sql ->bindValue(':pdate2',$pdate2);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu2'], 
             "gtime" => $row['g2time'], "gcomment" => $row['g2comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu2'];
+        $gtime[] = $row['g2time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g3name = :gname
@@ -114,10 +125,12 @@ $list = array();
         $sql ->bindValue(':pdate2',$pdate2);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu3'], 
             "gtime" => $row['g3time'], "gcomment" => $row['g3comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu3'];
+        $gtime[] = $row['g3time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g4name = :gname
@@ -127,10 +140,12 @@ $list = array();
         $sql ->bindValue(':pdate2',$pdate2);
         $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
-        $list[$i] = array("id" => $row['id'], "date" => $row['date'], 
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu4'], 
             "gtime" => $row['g4time'], "gcomment" => $row['g4comment']);
-        $i++;
+        $name[] = $row['name'];
+        $kinmu[] = $row['kinmu4'];
+        $gtime[] = $row['g4time'];
         }
         }
         
@@ -153,13 +168,10 @@ $list = array();
         print "</table><br />";
         
 //集計
-        $name_c = array_column($list, 'name');
-        $kinmu_c = array_column($list, 'kinmu');
-        $gtime_c = array_column($list, 'gtime');
         
-        $count_name = array_count_values($name_c);
-        $count_kinmu = array_count_values($kinmu_c);
-        $count_gtime = array_count_values($gtime_c);
+        $count_name = array_count_values($name);
+        $count_kinmu = array_count_values($kinmu);
+        $count_gtime = array_count_values($gtime);
         
         print "名前別集計<br /><table border='1'><tr><th>名前</th><th>回数</th></tr>";
         foreach ($count_name as $key => $value){

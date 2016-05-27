@@ -137,6 +137,7 @@ print "重複している日付があります！";
 
 $pdo = null;
 ?>
-    <br /><A href="index.html">ホーム</A><br />
+    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="index.html">ホーム</A></p>
 </body>
 </html>
