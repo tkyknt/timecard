@@ -3,26 +3,22 @@
     <head>
         <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, 
-              minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
         <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
         <!-- ※デフォルトのスタイル（style.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
         <!-- ※タブレット用のスタイル（tablet.css） -->
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
         <!-- ※スマートフォン用のスタイル（smart.css） -->
-        <title>kintai</title>
         <script type="text/javascript" src="cookie.js"></script>
+        <title>入力チェック</title>
     </head>
     <body onLoad= "getck()"> 
-    <h1>フォーエム出勤簿 </h1>
-    <p><script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
-            // -->
-     </SCRIPT></p>
-            <form action="kintai.php" method="post">
-            <p><select name="name">
-                <option value="宇野壮春" selected>宇野壮春</option>
+       <h1>入力チェック</h1>
+        <form action="check.php" method="post">
+            名前：
+            <select name="name">
+                <option value="宇野壮春">宇野壮春</option>
                 <option value="関健太郎">関健太郎</option>
                 <option value="三木清雅" >三木清雅</option>
                 <option value="鈴木淳">鈴木淳</option>
@@ -31,14 +27,10 @@
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
             </select><br />
-            <input type="submit" name="submit" onClick="setck()" value="タイムカード" /></p>
-               </form>
-    <p><A href="kintai_d.php">勤怠日付入力</A></p>
-    <p><A href="nippo.html">日報入力</A></p>
-    <p><A href="check.html">入力チェック</A></p>
-    <p><A href="list.html">勤怠一覧</A></p>
-    <p><A href="list_n.html">日報一覧（名前別）</A></p>
-    <p><A href="list_ng.html">日報一覧（業務別）</A></p>
-    <p><A href="today.php">本日の出勤状況</A></p>
-    </body>
+            確認したい月：<input type="month" name="month"><br />
 
+           <input type="submit" name="submit" onClick="setck()" value="抽出" /><br />
+            </form>
+        <A href="index.html">ホーム</A><br />
+    </body>
+</html>

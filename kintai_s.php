@@ -41,6 +41,7 @@ session_destroy();
         <fieldset>
             <legend>業務予定</legend>
             <p>主な業務　<select name="gname">
+                <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
                 <optgroup label="サル">
@@ -79,7 +80,7 @@ session_destroy();
         </fieldset>   
           <input type="button" value="業務予定保存" onClick="setck3()">
           <input type="button" value="読込" onClick="getck3()"><br />
-          <input type="submit" name="submit" value="出勤" /><br />
+          <input type="submit" name="submit" value="登録" /><br />
           </form>
     <A href="index.html">ホーム</A><br />
     </body>
