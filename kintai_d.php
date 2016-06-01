@@ -55,6 +55,7 @@
         <fieldset>
             <legend>業務予定</legend>
             <p>主な業務　<select name="gname">
+                <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
                 <optgroup label="サル">
@@ -84,6 +85,8 @@
                 <option value="早池峰シカ調査">早池峰シカ調査</option>
                 <option value="白神シカ調査">白神シカ調査</option>
                 <option value="環境省シカ調査">環境省シカ調査</option>
+                <option value="ＷＭＯ研修会事業">ＷＭＯ研修会事業</option>
+                <option value="環境省白神科学委員運営">環境省白神科学委員運営</option>
                 </optgroup>
                 
                 <option value="その他">その他</option>
