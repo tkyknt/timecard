@@ -1,8 +1,5 @@
 <?php
 session_start();
-echo "<div id='header'>",$_SESSION["name"],"<br />";
-echo date('Y年m月d日 H:i'),"</div>";
-session_destroy();
 ?>
 <html lang="ja">
     <head>
@@ -19,7 +16,12 @@ session_destroy();
         <script type="text/javascript" src="cookie2.js"></script>
     </head>
     <body>
-
+        <?php
+        echo "<div id='header'>",$_SESSION["name"],"<br />";
+        echo date('Y年m月d日 H:i'),"</div>";
+        session_destroy();
+        ?>
+        
         <h1>出勤入力 </h1>
 
         <form action="insert_k.php" method="post">
