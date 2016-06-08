@@ -42,11 +42,17 @@
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
        $sql->execute();
+       $ct = 0;
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
         $kintai[] = $row['date'];
         $kinmu[$row['date']] = $row['syukkin'];
+        $ct ++;
         }
+        if ($ct == 0){
+            $kintai_c = array();
+        }else{
         $kintai_c = array_count_values($kintai);
+        }
 
 //日報データベースから抽出
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE name = :pname
@@ -54,11 +60,17 @@
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
-       $sql->execute();
+        $ct = 0;
+        $sql->execute();
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
         $nippo[] = $row['date'];
+        $ct ++;
         }
+        if ($ct == 0){
+            $nippo_c = array();
+        }else{
         $nippo_c = array_count_values($nippo);
+        }
 
 //カレンダーデータベースから抽出
         $sql = $pdo->prepare("SELECT * FROM workday WHERE date >= :pdate1
