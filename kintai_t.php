@@ -30,13 +30,13 @@ session_destroy();
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">
             退勤時刻：<input type="time" name="time_t">打刻時刻と異なる場合入力<br />
+            到着時刻：<input type="time" value= "" name="time_c">直帰・現地泊の場合入力<br />
             早退：
-            <input type="radio" name="soutai" value="通常" checked>通常
-            <input type="radio" name="soutai" value="早退" >早退<br />
-            理由（休暇、遅刻、早退、外出等）<br />
+            <input type="checkbox" name="soutai" value="早退"><br />
+            理由（早退、外出等）<br />
             <input type="text" name="comment_t" size="30" value="" /><br />
            <input type="submit" name="submit" value="退勤" /> <br />
-        </fieldset>  
+        </fieldset>
    </form>
 
     <form action="update_g.php" method="post">

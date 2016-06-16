@@ -26,7 +26,7 @@
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
             </select><br />
-            日付：<input type="date" value= "<?php echo date('Y-m-j');?>" name="date"><br />
+            日付：<input type="date" value= "<?php echo date("Y-m-d");?>" name="date"><br />
 
             <fieldset>
             <legend>業務内容</legend>
@@ -248,4 +248,3 @@
 
         <A href="index.html">ホーム</A><br />
     </body>
-

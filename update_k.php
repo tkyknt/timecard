@@ -11,7 +11,7 @@
         <title>退勤入力完了</title>
 </head>
 <body>
-    <h1>退勤入力完了</h1><br />
+    <h1>退勤入力完了</h1>
     
 <?php
 mb_language("ja");
@@ -25,17 +25,27 @@ mb_internal_encoding("UTF-8");
     } else {
     $time_t = $_POST['time_t'];
     }
+    if (array_key_exists('soutai',$_POST)){
+      $soutai = $_POST['soutai'];
+      } else {
+      $soutai = "";
+      }
     
-  $sql = 'UPDATE kintai SET time_t = :time_t, soutai = :soutai, comment_t = :comment_t WHERE id = :id';
+  $sql = 'UPDATE kintai SET time_t = :time_t, time_c = :time_c, soutai = :soutai, comment_t = :comment_t WHERE id = :id';
   $st = $pdo->prepare($sql);
-  $params = array(':time_t' => $time_t, ':soutai' => $_POST['soutai'], ':comment_t' => $_POST['comment_t'], ':id' => $_POST['id']);
+  $params = array(':time_t' => $time_t, ':time_c' => $_POST['time_c'], ':soutai' => $soutai, ':comment_t' => $_POST['comment_t'], ':id' => $_POST['id']);
   $st-> execute($params);
 
-  print date('Y-m-d')."<br />"; 
-  print $_POST['name']."<br />退勤時刻：";
-  print $_POST['time_t']."<br />早退：";
-  print $_POST['soutai']."<br />理由：";
-  print $_POST['comment_t']."<br /><br />";
+  echo date('Y-m-d'), "<br />"; 
+  echo $_POST['name'], "<br />退勤時刻：";
+  echo $_POST['time_t'];
+  if ( !($_POST['time_c'] == "")){
+      echo "<br />到着時刻：", $_POST['time_c'];
+  }
+  if(array_key_exists('soutai',$_POST)){
+    echo "<br />早退：", $_POST['soutai'];
+}
+  echo "<br />理由：", $_POST['comment_t'], "<br /><br />";
   
   $sql = $pdo->prepare("SELECT * FROM nippo WHERE name = ? AND date = ?");
   $sql -> execute(array($_POST['name'], date('Y-m-d')));
@@ -46,7 +56,7 @@ mb_internal_encoding("UTF-8");
         }
 $pdo = null;
  if ($ct == 0 ) {
-    echo "日報が未入力です！<br />><A href='nippo.html'>入力はこちらから</A>";
+    echo "日報が未入力です！<br />><A href='nippo_i.php'>入力はこちらから</A>";
 }else{
     echo "本日もお疲れ様でした";
 }

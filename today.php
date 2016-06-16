@@ -41,7 +41,7 @@
     print "<table>
     <tr>
     <th>名前</th><th>開始</th><th>出発</th><th>勤務</th>
-    <th>遅刻</th><th>理由</th><th>業務名</th><th>業務内容</th><th>退勤</th>
+    <th>遅刻</th><th>理由</th><th>業務名</th><th>備考</th><th>退勤</th><th>到着</th>
     <th>早退</th><th>理由</th><th>外出出</th><th>外出戻</th></tr>";
     
 //社員名の数だけ1行ずつデータ取り出し表示
@@ -60,6 +60,8 @@
          else {$time2 = date("H：i", strtotime($row['time2']));}
         if ($row['time_t'] == "00:00:00"){$time_t = "";}
          else {$time_t = date("H：i", strtotime($row['time_t']));}
+         if ($row['time_c'] == "00:00:00"){$time_c = "";}
+         else {$time_c = date("H：i", strtotime($row['time_c']));}
         if ($row['time_go'] == "00:00:00"){$time_go = "";}
          else {$time_go = date("H：i", strtotime($row['time_go']));}
         if ($row['time_gi'] == "00:00:00"){$time_gi = "";}
@@ -75,6 +77,7 @@
         echo "</td><td>",$row['gname'];
         echo "</td><td>",$row['gcomment'];
         echo "</td><td>",$time_t;
+        echo "</td><td>",$time_c;
         echo "</td><td>",$row['soutai'];
         echo "</td><td>",$row['comment_t'];
         echo "</td><td>",$time_go;
@@ -86,7 +89,7 @@
         if ($ct == 0 ) {
             echo '<td>',$stname,'</td><td style="background:#ffcccc">未入力</td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td></td><td></td><td></td><td></td></tr>';
+                <td></td><td></td><td></td><td></td><td></td></tr>';
         }
     }
     print "</table>";

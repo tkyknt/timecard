@@ -20,9 +20,8 @@
     <p><script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
             // -->
      </SCRIPT></p>
-    <p>5月分は旧出勤簿に入力お願いします<br><A href="/kanri/old/index.html">旧出勤簿はこちら</A></p>
             <form action="kintai.php" method="post">
-            <p><select name="name">
+                <p><select name="name" required>
                 <option value="宇野壮春" selected>宇野壮春</option>
                 <option value="関健太郎">関健太郎</option>
                 <option value="三木清雅" >三木清雅</option>
@@ -32,18 +31,20 @@
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
             </select><br />
-            <input type="submit" name="submit" onClick="setck()" value="タイムカード" /></p>
+            <input  id="submit_button" type="submit" name="submit" onClick="setck()" value="タイムカード" /></p>
                </form>
     <p><A href="kintai_d.php">勤怠日付入力</A></p>
-    <p><A href="nippo.html">日報入力</A></p>
-    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="nippo_i.php">日報入力</A></p>
+    <p><A href="check_f.php">入力チェック</A></p>
     <p><A href="list.html">勤怠一覧</A></p>
     <p><A href="list_n.html">日報一覧（名前別）</A></p>
     <p><A href="list_ng.html">日報一覧（業務別）</A></p>
     <p><A href="today.php">本日の出勤状況</A></p>
     
     <h2>更新のお知らせ</h2>
-    <p>6/1 業務名に「ＷＭＯ研修会事業」、「環境省白神科学委員会運営」を追加しました</p>
-    
+    <div>
+    <iframe src="info.html" name="iframe">
+        このページはインラインフレームを使用しています。</iframe>
+    </div>
     </body>
 

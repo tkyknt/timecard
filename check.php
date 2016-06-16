@@ -28,7 +28,8 @@
 //表の出力
     echo "名前：", $_POST['name'], "<br />";
     echo $_POST['month'], "<br />";
-    echo "<table><tr align = 'center'><th>日付</th><th>曜日<th>出勤</th><th>日報</th></tr>";
+    echo "<table><tr align = 'center'><th>日付</th><th>曜日</th><th>出勤</th>
+    <th>退勤</th><th>日報</th></tr>";
     
 //入力条件に合わせてデータベースから抽出
         $pname =$_POST['name'];
@@ -37,7 +38,7 @@
 
 //勤怠データベースから抽出
         $sql = $pdo->prepare("SELECT * FROM kintai WHERE name = :pname
-                AND date >= :pdate1 AND date < :pdate2 ORDER BY date");
+                AND date >= :pdate1 AND date <= :pdate2 ORDER BY date");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -46,6 +47,7 @@
            while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
         $kintai[] = $row['date'];
         $kinmu[$row['date']] = $row['syukkin'];
+        $taikin[$row['date']] = $row['time_t'];
         $ct ++;
         }
         if ($ct == 0){
@@ -56,7 +58,7 @@
 
 //日報データベースから抽出
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE name = :pname
-                AND date >= :pdate1 AND date < :pdate2 ORDER BY date");
+                AND date >= :pdate1 AND date <= :pdate2 ORDER BY date");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -74,7 +76,7 @@
 
 //カレンダーデータベースから抽出
         $sql = $pdo->prepare("SELECT * FROM workday WHERE date >= :pdate1
-                AND date < :pdate2 ORDER BY date");
+                AND date <= :pdate2 ORDER BY date");
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
         $sql->execute();
@@ -87,14 +89,22 @@
             if(array_key_exists($key[0] , $kintai_c)){
                 if($kintai_c[$key[0]] >= 2){
                     $kintai_ck = "<strong>重複</strong>";
+                    $taikin_ck = "<strong>-</strong>";
                 }else{
                     $kintai_ck = $kinmu[$key[0]];
+                    if($taikin[$key[0]] == "00:00:00"){
+                        $taikin_ck = "<strong>未入力</strong>";
+                    }else{
+                        $taikin_ck = "○";
+                    }
                 }
             }else{
                 if($key[1] == 1){
                     $kintai_ck = "<strong>未入力</strong>";
+                    $taikin_ck = "<strong>未入力</strong>";
                 }else{
                     $kintai_ck = "-";
+                    $taikin_ck = "-";
                 }
             }
             if($kintai_ck == "-" or $kintai_ck == "休暇"){
@@ -117,7 +127,7 @@
             echo "<tr align = 'center'><td bgcolor = '#fff0f5'>";
         }
         echo date('d', strtotime($key[0])), "</td><td>",  $key[2], "</td><td>",
-                    $kintai_ck, "</td><td>", $nippo_ck, "</td></tr>";
+                    $kintai_ck, "</td><td>", $taikin_ck, "</td><td>", $nippo_ck, "</td></tr>";
             }
     
 echo "</table> <br>";

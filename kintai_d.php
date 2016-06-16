@@ -27,23 +27,23 @@
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
             </select></p>
-            <p>日付：<input type ="date" name="date"></p>
+            <p>日付：<input type ="date" value= "<?php echo date("Y-m-d");?>" name="date"></p>
             
         <fieldset>
             <legend>勤怠入力</legend>
             <p>勤怠：
             <input type="radio" name="syukkin" onClick="naiset()" value="内勤" checked>内勤
             <input type="radio" name="syukkin" onClick="gaiset()" value="外勤" >外勤
-            <input type="radio" name="syukkin" onClick="restset()" value="休暇" >休暇</p>
+            <input type="radio" name="syukkin" onClick="restset()" value="欠勤" >欠勤
+            <input type="radio" name="syukkin" onClick="restset()" value="有給" >有給</p>
             <p>遅刻：
-            <input type="radio" name="chikoku" value="通常" checked>通常
-            <input type="radio" name="chikoku" value="遅刻" >遅刻</p>
+            <input type="checkbox" name="chikoku" value="遅刻"></p>
             <p>早退：
-            <input type="radio" name="soutai" value="通常" checked>通常
-            <input type="radio" name="soutai" value="早退" >早退</p>
+            <input type="checkbox" name="soutai" value="早退"></p>
             <p>開始時刻：<input type="time" name="time"></p>
-            <p>出発時刻：<input type="time" name="time2" value= "" readonly>（外勤のみ入力）</p>
+            <p>出発時刻：<input type="time" name="time2" value= "" readonly>（直行の場合入力）</p>
             <p>退勤時刻：<input type="time" name="time_t"></p>
+            <p>到着時刻：<input type="time" value= "" name="time_c">（直帰・現場泊の場合入力）</p>
             <p>理由欄（遅刻、休暇等）<br />
             <input type="text" name="comment" size="30" value="" /></p>
             <p>理由（早退、外出等）<br />

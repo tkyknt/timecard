@@ -24,7 +24,15 @@
         die($e->getMessage());
 }
     print "名前：".$_POST['name']."<br />";
-    print $_POST['date1']."～".$_POST['date2']."<br />";
+    if($_POST['date1']){
+        if($_POST['date2']){
+            print $_POST['date1']."～".$_POST['date2']."<br />";
+        }else{
+             print $_POST['date1'];
+        }
+    }else{
+        print "全期間";
+    }
     print "<table border='1'>
     <tr>
     <th>id</th><th>名前</th><th>日付</th><th>業務名1</th><th>勤務1</th><th>時間1</th><th>内容1</th>
@@ -37,15 +45,27 @@
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
     if ($_POST['name'] == "全員"){
-        $sql = $pdo->prepare("SELECT * FROM nippo WHERE date >= :pdate1 AND date <= :pdate2 ORDER BY date");
-        $sql ->bindValue(':pdate1',$pdate1);
-        $sql ->bindValue(':pdate2',$pdate2);
-            }elseif ( ! $_POST['date1']) {
+            if ( ! $_POST['date1']){
+            $sql = $pdo->prepare("SELECT * FROM nippo ORDER BY date");
+            }elseif ( ! $_POST['date2']){
+            $sql = $pdo->prepare("SELECT * FROM nippo WHERE date = :pdate1 ORDER BY date");
+            $sql ->bindValue(':pdate1',$pdate1);
+            } else {
+            $sql = $pdo->prepare("SELECT * FROM nippo WHERE date >= :pdate1 AND date <= :pdate2 ORDER BY date");
+            $sql ->bindValue(':pdate1',$pdate1);
+            $sql ->bindValue(':pdate2',$pdate2);
+            }
+    }elseif ( ! $_POST['date1']) {
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE name LIKE :pname ORDER BY date");
         $sql ->bindValue(':pname',$pname);
-            } else {
+    } elseif ( ! $_POST['date2']){
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE name LIKE :pname
-                AND date >= :pdate1 AND date < :pdate2 ORDER BY date");
+                AND date = :pdate1 ORDER BY date");
+        $sql ->bindValue(':pname',$pname);
+        $sql ->bindValue(':pdate1',$pdate1);
+    }else {
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE name LIKE :pname
+                AND date >= :pdate1 AND date <= :pdate2 ORDER BY date");
         $sql ->bindValue(':pname',$pname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -101,7 +121,7 @@
 print "</table>";
 $pdo = null;
 ?>
-    <p><A href="check.html">入力チェック</A></p>
+    <p><A href="check_f.php">入力チェック</A></p>
     <p><A href="index.html">ホーム</A></p>
 </body>
 </html>

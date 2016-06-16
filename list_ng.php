@@ -24,17 +24,12 @@
         die($e->getMessage());
 }
 $list = array();
-    print "業務名：".$_POST['gname']."<br />";
-    print $_POST['date1']."～".$_POST['date2']."<br />";
-    print "<table border='1'>
-    <tr>
-    <th>id</th><th>日付</th><th>名前</th><th>勤務</th><th>時間1</th><th>内容1</th></tr>";
-    
+
     //テーブルから条件に合っデータの取り出し
         $gname =$_POST['gname'];
         $pdate1 =$_POST['date1'];
         $pdate2 =$_POST['date2'];
-    
+    $ct = 0;
     //日付指定なしの場合
     if ( ! $_POST['date1']) {
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g1name = :gname");
@@ -44,8 +39,13 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu1'], 
             "gtime" => $row['g1time'], "gcomment" => $row['g1comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu1'];
+        if($row['g1time'] == "午前" or $row['g1time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 0.5;
+        }elseif($row['g1time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 1;
+        }
         $gtime[] = $row['g1time'];
         }
         
@@ -56,8 +56,13 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu2'], 
             "gtime" => $row['g2time'], "gcomment" => $row['g2comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu2'];
+        if($row['g2time'] == "午前" or $row['g2time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 0.5;
+        }elseif($row['g2time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 1;
+        }
         $gtime[] = $row['g2time'];
         }
         
@@ -68,8 +73,13 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu3'], 
             "gtime" => $row['g3time'], "gcomment" => $row['g3comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu3'];
+        if($row['g3time'] == "午前" or $row['g3time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 0.5;
+        }elseif($row['g3time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 1;
+        }
         $gtime[] = $row['g3time'];
         }
         
@@ -80,16 +90,96 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu4'], 
             "gtime" => $row['g4time'], "gcomment" => $row['g4comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu4'];
+        if($row['g4time'] == "午前" or $row['g4time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 0.5;
+        }elseif($row['g4time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 1;
+        }
         $gtime[] = $row['g4time'];
         }
-        
-            }
+    }
     //日付指定有りの場合
-            else {
+    elseif( ! $_POST['date2'])  {
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g1name = :gname
-                AND date >= :pdate1 AND date < :pdate2");
+                AND date = :pdate1");
+        $sql ->bindValue(':gname',$gname);
+        $sql ->bindValue(':pdate1',$pdate1);
+        $sql->execute();
+           while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
+            "name" => $row['name'], "kinmu" => $row['kinmu1'], 
+            "gtime" => $row['g1time'], "gcomment" => $row['g1comment']);
+        if($row['g1time'] == "午前" or $row['g1time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 0.5;
+        }elseif($row['g1time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 1;
+        }
+        $gtime[] = $row['g1time'];
+        }
+        
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE g2name = :gname
+                AND date = :pdate1");
+        $sql ->bindValue(':gname',$gname);
+        $sql ->bindValue(':pdate1',$pdate1);
+        $sql->execute();
+           while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
+            "name" => $row['name'], "kinmu" => $row['kinmu2'], 
+            "gtime" => $row['g2time'], "gcomment" => $row['g2comment']);
+        if($row['g2time'] == "午前" or $row['g2time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 0.5;
+        }elseif($row['g2time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 1;
+        }
+        $gtime[] = $row['g2time'];
+        }
+        
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE g3name = :gname
+                AND date = :pdate1");
+        $sql ->bindValue(':gname',$gname);
+        $sql ->bindValue(':pdate1',$pdate1);
+        $sql->execute();
+           while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
+            "name" => $row['name'], "kinmu" => $row['kinmu3'], 
+            "gtime" => $row['g3time'], "gcomment" => $row['g3comment']);
+        if($row['g3time'] == "午前" or $row['g3time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 0.5;
+        }elseif($row['g3time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 1;
+        }
+        $gtime[] = $row['g3time'];
+        }
+        
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE g4name = :gname
+                AND date = :pdate1");
+        $sql ->bindValue(':gname',$gname);
+        $sql ->bindValue(':pdate1',$pdate1);
+        $sql->execute();
+           while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
+        $list[] = array("id" => $row['id'], "date" => $row['date'], 
+            "name" => $row['name'], "kinmu" => $row['kinmu4'], 
+            "gtime" => $row['g4time'], "gcomment" => $row['g4comment']);
+        if($row['g4time'] == "午前" or $row['g4time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 0.5;
+        }elseif($row['g4time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 1;
+        }
+        $gtime[] = $row['g4time'];
+        }
+        }else {
+        $sql = $pdo->prepare("SELECT * FROM nippo WHERE g1name = :gname
+                AND date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':gname',$gname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -98,13 +188,18 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu1'], 
             "gtime" => $row['g1time'], "gcomment" => $row['g1comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu1'];
+        if($row['g1time'] == "午前" or $row['g1time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 0.5;
+        }elseif($row['g1time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu1']] = $kinmu_c[$row['kinmu1']] + 1;
+        }
         $gtime[] = $row['g1time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g2name = :gname
-                AND date >= :pdate1 AND date < :pdate2");
+                AND date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':gname',$gname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -113,13 +208,18 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu2'], 
             "gtime" => $row['g2time'], "gcomment" => $row['g2comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu2'];
+        if($row['g2time'] == "午前" or $row['g2time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 0.5;
+        }elseif($row['g2time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu2']] = $kinmu_c[$row['kinmu2']] + 1;
+        }
         $gtime[] = $row['g2time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g3name = :gname
-                AND date >= :pdate1 AND date < :pdate2");
+                AND date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':gname',$gname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -128,13 +228,18 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu3'], 
             "gtime" => $row['g3time'], "gcomment" => $row['g3comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu3'];
+        if($row['g3time'] == "午前" or $row['g3time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 0.5;
+        }elseif($row['g3time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu3']] = $kinmu_c[$row['kinmu3']] + 1;
+        }
         $gtime[] = $row['g3time'];
         }
         
         $sql = $pdo->prepare("SELECT * FROM nippo WHERE g4name = :gname
-                AND date >= :pdate1 AND date < :pdate2");
+                AND date >= :pdate1 AND date <= :pdate2");
         $sql ->bindValue(':gname',$gname);
         $sql ->bindValue(':pdate1',$pdate1);
         $sql ->bindValue(':pdate2',$pdate2);
@@ -143,12 +248,34 @@ $list = array();
         $list[] = array("id" => $row['id'], "date" => $row['date'], 
             "name" => $row['name'], "kinmu" => $row['kinmu4'], 
             "gtime" => $row['g4time'], "gcomment" => $row['g4comment']);
-        $name[] = $row['name'];
-        $kinmu[] = $row['kinmu4'];
+        if($row['g4time'] == "午前" or $row['g4time'] == "午後"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 0.5;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 0.5;
+        }elseif($row['g4time'] == "終日"){
+            $name_c[$row['name']] = $name_c[$row['name']] + 1;
+            $kinmu_c[$row['kinmu4']] = $kinmu_c[$row['kinmu4']] + 1;
+        }
         $gtime[] = $row['g4time'];
         }
         }
         
+    if ($list == NULL){
+        die("データがありません<br /><A href='index.html'>ホーム</A>");
+    }
+    
+    print "業務名：".$_POST['gname']."<br />";
+    if($_POST['date1']){
+        if($_POST['date2']){
+            print $_POST['date1']."～".$_POST['date2']."<br />";
+        }else{
+             print $_POST['date1'];
+        }
+    }else{
+        print "全期間";
+    }
+    print "<table border='1'>
+    <tr>
+    <th>id</th><th>日付</th><th>名前</th><th>勤務</th><th>時間1</th><th>内容1</th></tr>";
 //並び替え
         foreach ($list as $key => $value){
         $key_id[$key] = $value[$_POST['sort']];
@@ -168,20 +295,18 @@ $list = array();
         print "</table><br />";
         
 //集計
-        
-        $count_name = array_count_values($name);
-        $count_kinmu = array_count_values($kinmu);
         $count_gtime = array_count_values($gtime);
         
-        print "名前別集計<br /><table border='1'><tr><th>名前</th><th>回数</th></tr>";
-        foreach ($count_name as $key => $value){
+        print "名前別集計<br />「午前、午後」は0.5、「終日」は1、「その他」はカウント無し<br />
+            <table border='1'><tr><th>名前</th><th>回数</th></tr>";
+        foreach ($name_c as $key => $value){
         echo "<td>".$key."</td>";
         echo "<td>".$value."</td></tr>";
             }
         echo "</table>";
         
-        print "勤務別集計<br /><table border='1'><tr><th>勤務</th><th>回数</th></tr>";
-        foreach ($count_kinmu as $key => $value){
+        print "勤務別集計　(集計方法は名前別と同様）<br /><table border='1'><tr><th>勤務</th><th>回数</th></tr>";
+        foreach ($kinmu_c as $key => $value){
         echo "<td>".$key."</td>";
         echo "<td>".$value."</td></tr>";
             }

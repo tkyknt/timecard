@@ -31,10 +31,10 @@ session_start();
             <p>勤怠：
             <input type="radio" name="syukkin" onClick="naiset()" value="内勤" checked>内勤
             <input type="radio" name="syukkin" onClick="gaiset()" value="外勤" >外勤
-            <input type="radio" name="syukkin" onClick="restset()" value="休暇" >休暇</p>
-            <p>遅刻：　　　
-            <input type="radio" name="chikoku" value="通常" checked>通常
-            <input type="radio" name="chikoku" value="遅刻" >遅刻</p>
+            <input type="radio" name="syukkin" onClick="restset()" value="欠勤" >欠勤
+            <input type="radio" name="syukkin" onClick="restset()" value="有給" >有給</p>
+            <p>遅刻：
+            <input type="checkbox" name="chikoku" value="遅刻"></p>
             <p>開始時刻：<input type="time" name="time">（打刻時刻と異なる場合は入力）</p>
             <p>出発時刻：<input type="time" name="time2" value= "" readonly>（外勤のみ入力）</p>
             <p>理由欄（遅刻、休暇等）<br />
