@@ -28,70 +28,68 @@
     $sql = $pdo->prepare("SELECT * FROM groups ORDER BY group_id");
     $sql->execute();
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
-        $group_set = array($row['pref'], $row['area'], $row['group']);
-        $group_list[] = $group_set;
+        $group_list[] = array($row['pref'], $row['area'], $row['group']);
     }
     
     $sql = $pdo->prepare("SELECT * FROM target");
     $sql->execute();
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
-        $group_count[] = $row['group'];
+        $group_count[] = $row['groups'];
     }
     $group_num = array_count_values($group_count);
     
-    $area = 0;
-    $pref = 0;
+    $area = "東京";
+    $pref = "東京";
     $pref_num  = array();
     $area_num  = array();
     
-    foreach($group_list as $value){
+    foreach($group_list as &$value){
         if (key_exists($value[2], $group_num)){
-        if ( ! $value[0] == $pref){
-            $pref_num["$value[0]"] = $group_num["$value[2]"];
-            $pref = $value[0];            
-        } else {
-            $pref_num["$value[0]"] += $group_num["$value[2]"];
-        }
-        if( ! $value[1] == $area){
-            $area_num["$value[1]"] = $group_num["$value[2]"];
-            $area = $value[1];
-        }else{
-            $area_num["$value[1]"] += $group_num["$value[2]"];
-        }
+            if($pref  == $value[0]){
+                $pref_num[$value[0]] += $group_num[$value[2]];
+            }else{
+                $pref_num[$value[0]] = $group_num[$value[2]];
+                $pref = $value[0];
+            }
+            if($area  == $value[1]){
+                $area_num[$value[1]] += $group_num[$value[2]];
+            }else{
+                $area_num[$value[1]] = $group_num[$value[2]];
+                $area = $value[1];
+            }
         }
     }
-    
+
     print "<table>
     <tr>
     <th>県</th><th>地域</th><th>群れ</th><th>個体名</th>
     <th>性別</th><th>周波数</th><th>ID</th><th>受信感度</th><th>ベルト</th><th>電池</th>
-    <th>アンテナ</th><th>装着年月日</th><th>装着時年齢</th><th備考</th></tr>";
-    
-    $group = 0;
-    $area = 0;
-    $pref = 0;
-    
+    <th>アンテナ</th><th>装着年月日</th><th>装着時年齢</th><th>備考</th></tr>";
+
+    $group = "東京";
+    $area = "東京";
+    $pref = "東京";
     foreach($group_list as $value){
-        if( ! $value['pref'] == $pref){
-            echo '<tr><td rowspan="', $pref_num[$value['pref']], '">',
-                    $value['pref'], "</td>";
-            $pref = $value['pref'];
-        }else{
-            echo '<tr>';
+        if (key_exists($value[2], $group_num)){
+        if($pref != $value[0]){
+           echo '<td rowspan="', $pref_num[$value[0]], '">',
+                    $value[0], "</td>";
+           $pref = $value[0];
         }
         
-        if( ! $value['area'] == $area){
-            echo '<td rowspan="', $area_num[$value['area']], '">',
-                    $value['area'], "</td>";
-            $area = $value['area'];
+        if($area != $value[1]){
+            echo '<td rowspan="', $area_num[$value[1]], '">',
+                    $value[1], "</td>";
+            $area = $value[1];
         }
         
-        echo '<td rowspan="', $group_num[$value['group']], '">',
-                $value['group'], "</td>";
+        echo '<td rowspan="', $group_num[$value[2]], '">',
+                $value[2], "</td>";
         
-        $sql = $pdo->prepare("SELECT * FROM target WHERE group = :group ODER BY 
-                set_date");
-        $sql ->bindValue(':group', $value['group']);
+        $group_name = $value[2];
+        
+        $sql = $pdo->prepare("SELECT * FROM target WHERE groups = :groupname");
+        $sql ->bindValue(':groupname', $group_name);
         $sql->execute();
         while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
             echo "<td>", $row['target'], "</td>";
@@ -104,16 +102,15 @@
             echo "<td>", $row['antenna'], "</td>";
             echo "<td>", $row['set_date'], "</td>";
             echo "<td>", $row['set_age'], "</td>";
-            echo "<td>", $row['target_com'], "</td></tr>";
+            echo "<td>", $row['target_com'], "</td></tr><tr>";
         }
     }
+    }
     echo "</table>";
-            
-        $pdo = null;
+    $pdo = null;
 ?>
-
     
-    <br /><A href="index.html">ホーム</A><br />
+    <br /><A href="index.php">ホーム</A><br />
 </body>
 </html>
         
