@@ -1,6 +1,6 @@
 @media screen 
 	and (max-width: 1024px) {
-
+.break { page-break-before: always; }
 img{
     max-width: 100%;
     height: auto;

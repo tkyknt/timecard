@@ -59,31 +59,23 @@
 	</section>
         <section>
 	<div class="category">
-            <h2><A href="search_tar.php">装着個体検索</A></h2>
+            <h2><A href="teleme_search.php">装着個体情報入力</A></h2>
         </div>
 	</section>
         <section>
 	<div class="category">
-            <h2><A href="list_tel.php">発信器検索</A></h2>
+            <h2><A href="search_tar.php">装着個体検索(未実装)</A></h2>
         </div>
 	</section>
         <section>
 	<div class="category">
-            <h2><A href="ins_tar.php">装着個体情報入力</A></h2>
+            <h2><A href="src_tel.php">発信器検索</A></h2>
         </div>
 	</section>
         <section>
 	<div class="category">
             <h2><A href="ins_tel.php">発信器情報入力</A></h2>
         </div>
-
         </div>
-	
-
-    <h2>更新のお知らせ</h2>
-    <div>
-    <iframe src="info.html" name="iframe">
-        このページはインラインフレームを使用しています。</iframe>
-    </div>
     </body>
 </html>

@@ -11,6 +11,7 @@
         <title>発信機装着個体一覧</title>
 </head>
 <body>
+    <section class="sheet">
     <h1>発信器装着個体一覧</h1>
 <?php
 //データベースに接続
@@ -28,7 +29,7 @@
     $sql = $pdo->prepare("SELECT * FROM groups ORDER BY group_id");
     $sql->execute();
     while($row = $sql->fetch(PDO::FETCH_ASSOC)){
-        $group_list[] = array($row['pref'], $row['area'], $row['group']);
+        $group_list[] = array($row['pref'], $row['area'], $row['group'], $row['page']);
     }
     
     $sql = $pdo->prepare("SELECT * FROM target");
@@ -60,22 +61,33 @@
         }
     }
 
-    print "<table>
-    <tr>
-    <th>県</th><th>地域</th><th>群れ</th><th>個体名</th>
-    <th>性別</th><th>周波数</th><th>ID</th><th>受信感度</th><th>ベルト</th><th>電池</th>
-    <th>アンテナ</th><th>装着年月日</th><th>装着時年齢</th><th>備考</th></tr>";
+    
 
     $group = "東京";
     $area = "東京";
     $pref = "東京";
+    $page = 1;
+    $ct = 0;
+    
     foreach($group_list as $value){
         if (key_exists($value[2], $group_num)){
-        if($pref != $value[0]){
-           echo '<td rowspan="', $pref_num[$value[0]], '">',
-                    $value[0], "</td>";
-           $pref = $value[0];
-        }
+            if($pref != $value[0]){
+                if($ct > 0){
+                    echo "</table><br>";
+                 }
+                 if($page != $value[3]){
+                     echo '</section><section class="sheet">';
+                     $page = $value[3];
+                 }
+                echo '<table><tr><th colspan="13">',
+                    $value[0], '</th></tr>';
+                echo '<tr><th width="12"></th><th>群れ</th><th width="72">個体名</th><th>性別</th><th>周波数</th>
+                    <th width="30">ID</th><th width="30">受信感度</th><th width="48">ベルト</th><th width="48">電池</th>
+                    <th width="48">アンテナ</th><th width="60"装着年月日</th><th width="30">装着年齢</th><th>備考</th></tr>';
+                $pref = $value[0];
+            }else{
+                echo '<tr>';
+            }
         
         if($area != $value[1]){
             echo '<td rowspan="', $area_num[$value[1]], '">',
@@ -102,8 +114,9 @@
             echo "<td>", $row['antenna'], "</td>";
             echo "<td>", $row['set_date'], "</td>";
             echo "<td>", $row['set_age'], "</td>";
-            echo "<td>", $row['target_com'], "</td></tr><tr>";
+            echo "<td>", $row['target_com'], "</td></tr>";
         }
+        $ct ++;
     }
     }
     echo "</table>";
@@ -111,6 +124,7 @@
 ?>
     
     <br /><A href="index.php">ホーム</A><br />
+    </section>
 </body>
 </html>
         
