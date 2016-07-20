@@ -33,6 +33,49 @@
             $ct ++;
         }
         
+        
+        $sql = 'UPDATE teleme SET category = :category, freq = :freq, sn = :sn, '
+                . 'digi_id = :digi_id, belt = :belt, battery = :battery, '
+                . 'antenna = :antenna, sig_freq = :sig_freq, buy_date = :buy_date, ' 
+                . 'store = :store, pro_date = :pro_date, tele_com1 = :tele_com1, '
+                . 'tele_com2 = :tele_com2, duration = :duration, stock = :stock, '
+                . 'update = :update WHERE tel_id = :tel_id';
+        $st = $pdo->prepare($sql);
+        $params = array(
+            ':category' => $_POST['category'],
+            ':freq' => $_POST['freq'],
+            ':sn' => $_POST['sn'],
+            ':digi_id' => $_POST['digi_id'],
+            ':belt' => $_POST['belt'],
+            ':battery' => $_POST['battery'],
+            ':antenna' => $_POST['antenna'],
+            ':sig_freq' => $_POST['sig_freq'],
+            ':buy_date' => $_POST['buy_date'],
+            ':store' => $_POST['store'],
+            ':pro_date' => $_POST['pro_date'],
+            ':tele_com1' => $_POST['tele_com1'],
+            ':tele_com2' => $_POST['tele_com2'],
+            ':duration' => $_POST['duration'],
+            ':stock' => $_POST['stock'],
+            ':update' => date("Y-m-d"),
+            ':tel_id' => $_POST['tel_id']);
+        $st-> execute($params);
+        
+        $sql = 'UPDATE target SET category = :category, freq = :freq, digi_id = :digi_id, '
+            . 'belt = :belt, battery = :battery, antenna = :antenna, update = :update '
+            . 'WHERE target_id = :target_id;';
+        $st = $pdo->prepare($sql);
+        $params = array(
+            ':category' => $_POST['category'],
+            ':freq' => $_POST['freq'],
+            ':digi_id' => $_POST['digi_id'],
+            ':belt' => $_POST['belt'],
+            ':battery' => $_POST['battery'],
+            ':antenna' => $_POST['antenna'],
+            ':update' => date("Y-m-d"),
+            ':target_id' => $_POST['target_id']);
+        $st-> execute($params);
+        
     echo $ct;
     $pdo = null;
 ?>

@@ -14,23 +14,30 @@
         <script type="text/javascript" src="cookie3.js"></script>
 <body onLoad = "getck()" onLoad = "gettoday()">
     <h1>日報入力</h1>
-        <form action="nippo.php" method="post">
-            名前：
-            <select name="name">
-                <option value="宇野壮春" selected>宇野壮春</option>
-                <option value="関健太郎">関健太郎</option>
-                <option value="三木清雅" >三木清雅</option>
-                <option value="鈴木淳">鈴木淳</option>
-                <option value="瀬戸秀穂">瀬戸秀穂</option>
-                <option value="橋本光平">橋本光平</option>
-                <option value="伊左治美奈">伊左治美奈</option>
-                <option value="木野田拓也">木野田拓也</option>
-            </select><br />
-            日付：<input type="date" value= "<?php echo date("Y-m-d");?>" name="date"><br />
-
-            <fieldset>
-            <legend>業務内容</legend>
-            <p>業務名<select name="g1name">
+        <form id="form_s" action="nippo.php" method="post">
+            <ul>
+                <li>
+                    <label><span>名前</span>
+                        <select name="name">
+                            <option value="宇野壮春" selected>宇野壮春</option>
+                            <option value="関健太郎">関健太郎</option>
+                            <option value="三木清雅" >三木清雅</option>
+                            <option value="鈴木淳">鈴木淳</option>
+                            <option value="瀬戸秀穂">瀬戸秀穂</option>
+                            <option value="橋本光平">橋本光平</option>
+                            <option value="伊左治美奈">伊左治美奈</option>
+                            <option value="木野田拓也">木野田拓也</option>
+                        </select></label>
+                </li>
+                <li>
+                    <label><span>日付</span>
+                        <input type="date" value= "<?php echo date("Y-m-d");?>" name="date"></label>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <label><span>業務名</span>
+                        <select name="g1name">
                 <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
@@ -66,25 +73,30 @@
                 </optgroup>
                 
                 <option value="その他">その他</option>
-            </select><br />
+            </select></label>
+                </li>
+                <li><label><span>勤務形態</span>
+                    <input type="radio" name="kinmu1" value="内勤">内勤　
+                    <input type="radio" name="kinmu1" value="外勤" >外勤　
+                    <input type="radio" name="kinmu1" value="" 
+                           checked="checked" style="display:none;" />
+                    時間<select name="g1time">
+                        <option value=""></option>
+                        <option value="午前">午前</option>
+                        <option value="午後">午後</option>
+                        <option value="終日" >終日</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </li>
+                <li><label><span>内容・成果</span>
+                        <input type="text" name="g1comment" size="30" value="" /></label>
+                </li>
+            </ul>
             
-            <input type="radio" name="kinmu1" value="内勤">内勤
-            <input type="radio" name="kinmu1" value="外勤" >外勤　
-            <input type="radio" name="kinmu1" value="" 
-                 checked="checked" style="display:none;" />
-            
-            時間<select name="g1time">
-                <option value=""></option>
-                <option value="午前">午前</option>
-                <option value="午後">午後</option>
-                <option value="終日" >終日</option>
-                <option value="その他">その他</option>
-            </select><br />
-            
-            内容・成果：<input type="text" name="g1comment" size="30" value="" /></p>
-           
-           
-            <p>業務名<select name="g2name">
+             <ul>
+                <li>
+                    <label><span>業務名</span>
+                        <select name="g2name">
                 <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
@@ -120,23 +132,30 @@
                 </optgroup>
                 
                 <option value="その他">その他</option>
-            </select><br />
+            </select></label>
+                </li>
+                <li><label><span>勤務形態</span>
+                    <input type="radio" name="kinmu1" value="内勤">内勤　
+                    <input type="radio" name="kinmu1" value="外勤" >外勤　
+                    <input type="radio" name="kinmu1" value="" 
+                           checked="checked" style="display:none;" />
+                    時間<select name="g2time">
+                        <option value=""></option>
+                        <option value="午前">午前</option>
+                        <option value="午後">午後</option>
+                        <option value="終日" >終日</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </li>
+                <li><label><span>内容・成果</span>
+                        <input type="text" name="g2comment" size="30" value="" /></label>
+                </li>
+            </ul>
             
-            <input type="radio" name="kinmu2" value="内勤">内勤
-            <input type="radio" name="kinmu2" value="外勤" >外勤　
-            <input type="radio" name="kinmu2" value="" 
-                 checked="checked" style="display:none;" />
-            
-            時間<select name="g2time">
-                <option value=""></option>
-                <option value="午前">午前</option>
-                <option value="午後">午後</option>
-                <option value="終日" >終日</option>
-                <option value="その他">その他</option>
-            </select><br />
-            内容・成果：<input type="text" name="g2comment" size="30" value="" /></p>
-           
-            <p>業務名<select name="g3name">
+             <ul>
+                <li>
+                    <label><span>業務名</span>
+                        <select name="g3name">
                 <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
@@ -172,23 +191,30 @@
                 </optgroup>
                 
                 <option value="その他">その他</option>
-            </select><br />
+            </select></label>
+                </li>
+                <li><label><span>勤務形態</span>
+                    <input type="radio" name="kinmu1" value="内勤">内勤　
+                    <input type="radio" name="kinmu1" value="外勤" >外勤　
+                    <input type="radio" name="kinmu1" value="" 
+                           checked="checked" style="display:none;" />
+                    時間<select name="g3time">
+                        <option value=""></option>
+                        <option value="午前">午前</option>
+                        <option value="午後">午後</option>
+                        <option value="終日" >終日</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </li>
+                <li><label><span>内容・成果</span>
+                        <input type="text" name="g3comment" size="30" value="" /></label>
+                </li>
+            </ul>
             
-            <input type="radio" name="kinmu3" value="内勤">内勤
-            <input type="radio" name="kinmu3" value="外勤" >外勤　
-            <input type="radio" name="kinmu3" value="" 
-                 checked="checked" style="display:none;" />
-            
-            時間<select name="g3time">
-                <option value=""></option>
-                <option value="午前">午前</option>
-                <option value="午後">午後</option>
-                <option value="終日" >終日</option>
-                <option value="その他">その他</option>
-            </select><br />
-            内容・成果：<input type="text" name="g3comment" size="30" value="" /></p>
-           
-            <p>業務名<select name="g4name">
+             <ul>
+                <li>
+                    <label><span>業務名</span>
+                        <select name="g4name">
                 <option value="" selected></option>
                 <option value="会社業務">会社業務</option>
                 
@@ -224,27 +250,35 @@
                 </optgroup>
                 
                 <option value="その他">その他</option>
-            </select><br />
-            
-            <input type="radio" name="kinmu4" value="内勤">内勤
-            <input type="radio" name="kinmu4" value="外勤" >外勤　
-            <input type="radio" name="kinmu4" value="" 
-                 checked="checked" style="display:none;" />
-            
-            時間<select name="g4time">
-                <option value=""></option>
-                <option value="午前">午前</option>
-                <option value="午後">午後</option>
-                <option value="終日" >終日</option>
-                <option value="その他">その他</option>
-            </select><br />
-            内容・成果：<input type="text" name="g4comment" size="30" value="" /></p>
-
-          <input type="button" value="業務内容保存" onClick="setck4()">
-          <input type="button" value="読込" onClick="getck4()"><br />
-           <input type="submit" name="submit" onClick="setck()" value="登録する" /> <br />
-</fieldset> 
-            </form>
+            </select></label>
+                </li>
+                <li><label><span>勤務形態</span>
+                    <input type="radio" name="kinmu1" value="内勤">内勤　
+                    <input type="radio" name="kinmu1" value="外勤" >外勤　
+                    <input type="radio" name="kinmu1" value="" 
+                           checked="checked" style="display:none;" />
+                    時間<select name="g4time">
+                        <option value=""></option>
+                        <option value="午前">午前</option>
+                        <option value="午後">午後</option>
+                        <option value="終日" >終日</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </li>
+                <li><label><span>内容・成果</span>
+                        <input type="text" name="g4comment" size="30" value="" /></label>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="button" value="業務内容保存" onClick="setck4()">
+                    <input type="button" value="読込" onClick="getck4()">
+                </li>
+                <li>
+                    <input type="submit" name="submit" onClick="setck()" value="登録する" />
+                </li>
+            </ul>
+        </form>
 
         <A href="index.html">ホーム</A><br />
     </body>

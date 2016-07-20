@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=4.0, user-scalable=yes">
+        <link rel="stylesheet" media="all" type="text/css" href="css/pc.css" />
+        <!-- ※デフォルトのスタイル（style.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
+        <!-- ※タブレット用のスタイル（tablet.css） -->
+        <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
+        <!-- ※スマートフォン用のスタイル（smart.css） -->
+        <script type="text/javascript" src="cookie.js"></script>
+        <title>出勤状況確認</title>
+    </head>
+    <body onLoad= "getck()"> 
+        <h1>出勤状況確認</h1>
+        <form action="date.php" method="post">
+            日付：<input type="date" name="date" ><br />
+           <input type="submit" name="submit" onClick="setck()" value="抽出" /><br />
+            </form>
+          <A href="index.html">ホーム</A><br />
+    </body>
+</html>

@@ -29,11 +29,13 @@
                         die($e->getMessage());
         }
         
-        $st = $pdo->prepare("INSERT INTO target VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $up_date = date("Y-m-d");
+        
+        $st = $pdo->prepare("INSERT INTO target VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $st->execute(array('',$_POST['groupname'], $_POST['target'],$_POST['sex'],$_POST['set_date'],
             $_POST['set_age'],$_POST['target_com'], $_POST['sens'],$_POST['tel_id'],
             $_POST['category'], $_POST['freq'], $_POST['digi_id'], $_POST['belt'],
-            $_POST['battery'],$_POST['antenna'], date("Y-m-d")));
+            $_POST['battery'],$_POST['antenna'], $_POST['list_disp'], $up_date));
         
         $sql = $pdo->prepare("SELECT * FROM target WHERE tel_id = :tel_id");
         $sql ->bindValue(':tel_id', $_POST['tel_id']);
@@ -48,7 +50,7 @@
                 store = :store, pro_date = :pro_date, set_date = :set_date, 
                 tele_com1 = :tele_com1, tele_com2 = :tele_com2, stock = :stock, 
                 duration = :duration, target_id = :target_id, target = :target, 
-                update = :update WHERE tel_id = :tel_id;';
+                up_date = :up_date WHERE tel_id = :tel_id;';
         $st = $pdo->prepare($sql);
         $params = array(
             ':category' => $_POST['category'],
@@ -69,7 +71,7 @@
             ':duration' => $_POST['duration'],
             ':target_id' => $target_id,
             ':target' => $_POST['target'],
-            ':update' => date("Y-m-d"),
+            ':up_date' => $up_date,
             ':tel_id' => $_POST['tel_id']);
         $st-> execute($params);
                 
@@ -80,7 +82,6 @@
         echo $_POST['set_date'];
         echo $_POST['set_age'];
         echo $_POST['target_com'];
-        echo $_POST['antenna'];
         echo $_POST['sig_freq'];
         echo $_POST['buy_date'];
         echo $_POST['store'];
@@ -95,7 +96,7 @@
         echo $_POST['belt'];
         echo $_POST['battery'];
         echo $_POST['antenna'];
-        echo date("Y-m-d");
+        echo $up_date;
         
         $pdo = null;
         ?>

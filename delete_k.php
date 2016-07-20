@@ -28,7 +28,7 @@ mb_internal_encoding("UTF-8");
     レコードを削除しました
     <p><A href="check_f.php">入力チェック</A></p>
     <p><A href="list.html">勤怠抽出</A></p>
-    <p><A href="kintai_d.html">勤怠日付入力</A></p>
+    <p><A href="kintai_d.php">勤怠日付入力</A></p>
     <p><A href="index.html">ホーム</A></p>
 </body>
 </html>

@@ -13,10 +13,10 @@
         <link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
         <!-- ※スマートフォン用のスタイル（smart.css） -->
         <meta charset="UTF-8">
-        <title>個体情報編集完了</title>
+        <title>発信器情報編集完了</title>
     </head>
     <body>
-        <h1>個体情報編集完了</h1>
+        <h1>発信器情報編集完了</h1>
         <?php
         mb_language("ja");
         mb_internal_encoding("UTF-8");
@@ -31,51 +31,63 @@
         
         $up_date = date("Y-m-d");
         
-        $sql = 'UPDATE teleme SET category = :category, freq = :freq, sn = :sn, '
-                . 'digi_id = :digi_id, belt = :belt, battery = :battery, '
-                . 'antenna = :antenna, sig_freq = :sig_freq, buy_date = :buy_date, ' 
-                . 'store = :store, pro_date = :pro_date, tele_com1 = :tele_com1, '
-                . 'tele_com2 = :tele_com2, duration = :duration, stock = :stock, '
-                . 'up_date = :up_date '
-                . 'WHERE tel_id = :tel_id';
+         $sql = 'UPDATE teleme SET category = :category, freq = :freq, '
+               . 'digi_id = :digi_id, belt = :belt, battery = :battery, '
+               . 'antenna = :antenna, up_date = :up_date WHERE tel_id = :tel_id';
         $st = $pdo->prepare($sql);
         $params = array(
             ':category' => $_POST['category'],
             ':freq' => $_POST['freq'],
-            ':sn' => $_POST['sn'],
             ':digi_id' => $_POST['digi_id'],
             ':belt' => $_POST['belt'],
             ':battery' => $_POST['battery'],
             ':antenna' => $_POST['antenna'],
-            ':sig_freq' => $_POST['sig_freq'],
-            ':buy_date' => $_POST['buy_date'],
-            ':store' => $_POST['store'],
-            ':pro_date' => $_POST['pro_date'],
-            ':tele_com1' => $_POST['tele_com1'],
-            ':tele_com2' => $_POST['tele_com2'],
-            ':duration' => $_POST['duration'],
-            ':stock' => $_POST['stock'],
             ':up_date' => $up_date,
             ':tel_id' => $_POST['tel_id']);
         $st-> execute($params);
         
-        $sql = 'UPDATE target SET category = :category, freq = :freq, digi_id = :digi_id, '
-            . 'belt = :belt, battery = :battery, antenna = :antenna, '
+        $sql = 'UPDATE target SET groups = :groups, target = :target, sex = :sex, '
+            . 'set_date = :set_date, set_age = :set_age, target_com = :target_com, '
+            . 'sens = :sens, category = :category, freq = :freq, digi_id = :digi_id, '
+            . 'belt = :belt, battery = :battery, antenna = :antenna, list_disp = :list_disp, '
             . 'up_date = :up_date '
             . 'WHERE target_id = :target_id';
         $st = $pdo->prepare($sql);
         $params = array(
+            ':groups' => $_POST['groups'],
+            ':target' => $_POST['target'],
+            ':sex' => $_POST['sex'],
+            ':set_date' => $_POST['set_date'],
+            ':set_age' => $_POST['set_age'],
+            ':target_com' => $_POST['target_com'],
+            ':sens' => $_POST['sens'],
             ':category' => $_POST['category'],
             ':freq' => $_POST['freq'],
             ':digi_id' => $_POST['digi_id'],
             ':belt' => $_POST['belt'],
             ':battery' => $_POST['battery'],
             ':antenna' => $_POST['antenna'],
+            ':list_disp' => $_POST['list_disp'],
             ':up_date' => $up_date,
             ':target_id' => $_POST['target_id']);
         $st-> execute($params);
         
-        
+        echo '<p>', $_POST['target_id'], '</p>';
+        echo '<p>', $_POST['groups'], '</p>';
+        echo '<p>', $_POST['sex'], '</p>';
+        echo '<p>', $_POST['set_date'], '</p>';
+        echo '<p>', $_POST['set_age'], '</p>';
+        echo '<p>', $_POST['target_com'], '</p>';
+        echo '<p>', $_POST['sens'], '</p>';
+        echo '<p>', $_POST['tel_id'], '</p>';
+        echo '<p>', $_POST['category'], '</p>';
+        echo '<p>', $_POST['freq'], '</p>';
+        echo '<p>', $_POST['digi_id'], '</p>';
+        echo '<p>', $_POST['belt'], '</p>';
+        echo '<p>', $_POST['battery'], '</p>';
+        echo '<p>', $_POST['antenna'], '</p>';
+        echo '<p>', $_POST['list_disp'], '</p>';
+        echo '<p>', $up_date, '</p>';
         $pdo = null;
         ?>
         <br /><A href="index.php">ホーム</A><br />

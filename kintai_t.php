@@ -23,33 +23,49 @@ $date = $_SESSION["date"];
 $id = $_SESSION["id"];
 session_destroy();
 ?>
-   <form action="update_k.php" method="post">
-       <fieldset>
-       <legend>退勤入力</legend>
+    <h1>退勤入力</h1>
+   <form id="form_s" action="update_k.php" method="post">
        <input type ="hidden" name="name" value="<?= $name ?>">
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">
-            退勤時刻：<input type="time" name="time_t">打刻時刻と異なる場合入力<br />
-            到着時刻：<input type="time" value= "" name="time_c">直帰・現地泊の場合入力<br />
-            早退：
-            <input type="checkbox" name="soutai" value="早退"><br />
-            理由（早退、外出等）<br />
-            <input type="text" name="comment_t" size="30" value="" /><br />
-           <input type="submit" name="submit" value="退勤" /> <br />
-        </fieldset>
+       <ul>
+           <li>
+               <label><span>退勤時刻</span>
+                   <input type="time" name="time_t"><small>打刻時刻と異なる場合入力</small></label>
+           </li>
+           <li>
+               <label><span>到着時刻</span>
+                   <input type="time" value= "" name="time_c"><small>直帰・現地泊の場合入力</small></label>
+           </li>
+           <li>
+               <label><span>早退</span>
+                   <input type="checkbox" name="soutai" value="早退"></label>
+           </li>
+           <li>
+               <label><span>理由（早退、外出等）</span>
+                   <input type="text" name="comment_t" size="30" value="" /></label>
+           </li>
+           <li>
+            <input type="submit" name="submit" value="退勤" />
+           </li>
+       </ul>
    </form>
-
-    <form action="update_g.php" method="post">
-       <fieldset>
-       <legend>外出（業務外）入力</legend>
+    
+    <h1>外出（業務外）入力</h1>
+    <form id="form_s" action="update_g.php" method="post">
        <input type ="hidden" name="name" value="<?= $name ?>">
        <input type ="hidden" name="date" value="<?=  $date ?>">
        <input type ="hidden" name="id" value="<?=  $id ?>">
-       時刻：<input type="time" name="time_go">～
-       <input type="time" name="time_gi"><br />
-       <input type="submit" name="submit" value="外出" /> <br />
-       </fieldset>
-       </form><br />
+       <ul>
+           <li>
+               <label><span>時刻</span>
+                   <input type="time" name="time_go">～<input type="time" name="time_gi"></label>
+           </li>
+           <li>
+            <input type="submit" name="submit" value="外出" />
+           </li>
+       </ul>
+       </form>
         <A href="index.html">ホーム</A><br />
     </body>
 </html>

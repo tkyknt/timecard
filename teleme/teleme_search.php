@@ -36,7 +36,7 @@
             <input type="submit" name="submit" value="検索" />
         </form>
         
-        <p><A href="index.html">ホーム</A></p>
+        <p><A href="index.php">ホーム</A></p>
 
     </body>
 </html>

@@ -5,7 +5,7 @@
 
 @media print {
     body {
-        font-size: 12px;
+        font-size: 11px;
     }
 .sheet {
   page-break-after: always;
@@ -13,21 +13,21 @@
 table,
 th,
 td {
-    line-height: 110%;
+    line-height: 100%;
     border-collapse: collapse;
     border-spacing: 0;
 }
 
 table {
 	width: 100%;
-	margin: 0 0 20px 0;
+	margin: 0 0 10px 0;
 	padding: 5px;
 	border: 1px solid #333333;
 }
 
 table th,
 table td {
-	padding: 3px;
+	padding: 1px;
 	font-size: 90%;
 }
 
@@ -38,7 +38,10 @@ table th {
 table td {
 	border: 1px solid #333333;
 }
+#noprint { diaply: none; }
 }
+
+
 
 @media screen and (min-width: 769px){
 img{
@@ -93,27 +96,84 @@ th {
 	padding: 0.5em;
 }
 
-/* リンク色変更はここ */
+/* 主にインデックスページ
+--------------------*/
+section{
+    margin:0;
+}
+
+#categories{
+     margin:1em;
+}
+#timecard{
+     margin:0;
+}
+
+#timecard select{
+     font-size:15px;
+}
+
+.category{
+    margin:0;
+}
+
+#info{
+    margin:1em;
+}
+
+.news{
+    font-size:0.5em;
+    margin:1em;
+}
+
 a{
-    margin:10px;
     color:#333;
     text-decoration:none;
     font-size:1em;
+    padding:5px;
     display:block;
+    border:none;
+    border-color:#444444;
+    border-top:solid 1px #BABDB9;
+    border-bottom:solid 1px #F5F5F5;
+    border-left:solid 1px #BABDB9;
+    border-right:solid 1px #BABDB9;
     width:150px;
-    padding-top:5px;
-    padding-bottom:5px;
-    background-color: #999999
+    background-image: -moz-linear-gradient(top, #FFF, #EBEBEB);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#FFF), to(#EBEBEB));
+    background-image: -o-linear-gradient(top, #FFF, #EBEBEB);
+    background-image: linear-gradient(top, #FFF, #EBEBEB);
 }
+
+input#submit_button{
+	cursor:pointer;     /*←これでカーソルを指先型に変化させる*/
+	font-size:110%;
+	font-weight: normal;
+	width:160px;
+	padding: 5px 0;
+	border-style:solid;
+        border-color:#BABDB9;
+        border-top:solid 1px #BABDB9;
+        border-bottom:solid 1px #BABDB9;
+        border-left:solid 1px #BABDB9;
+        border-right:solid 1px #BABDB9;
+	color:#333;
+	background:#FFF;
+/*↓背景グラデーションの指定です*/
+	background: -moz-linear-gradient(top, #FFF, #EBEBEB);
+	background: -webkit-linear-gradient(top, #FFF, #EBEBEB);
+	background: linear-gradient(#FFF, #EBEBEB);
+/*↓以下、ボックスの角丸、シャドウ、テキストシャドウの指定*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 
 iframe{
     width:300px;
     border: solid 1px #A9A9A9;
-}   
-
-/* フォーム部分
---------------------*/
-input#submit_button {
-    padding: 15px 30px;
 }
+
+
 }

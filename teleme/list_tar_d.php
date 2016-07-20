@@ -79,12 +79,12 @@
                      echo '</section><section class="sheet">';
                      $page = $value[3];
                  }
-                echo '<table><tr><th colspan="13">',
+                echo '<table><tr><th colspan="14">',
                     $value[0], '</th></tr>';
                 echo '<tr><th width="12"></th><th width="60">群れ</th><th width="60">個体名</th><th>性別</th><th>周波数</th>
                     <th width="30">ID</th><th width="30">受信感度</th><th width="48">ベルト</th><th width="48">電池</th>
                     <th width="48">アン<br>テナ</th><th width="60">装着<br>年月日</th><th width="30">装着<br>年齢</th>
-                    <th>備考</th></tr>';
+                    <th>備考</th><th id="noprint"></th></tr>';
                 $pref = $value[0];
             }else{
                 echo '<tr>';
@@ -123,8 +123,12 @@
             }else{
                 echo '<td align="center">', $row['set_age'], "</td>";
             }
-            echo "<td>", $row['target_com'], "</td></tr>";
-
+            echo "<td>", $row['target_com'], "</td>";
+            
+            echo '<form action="list_del.php" method="post">';
+            echo '<input type="hidden" name="target_id" value="', $row['target_id'], '">';
+            echo '<td id="noprint"><input type="submit" value="除外">';
+            echo '</form></td></tr>';
         }
         $ct ++;
     }

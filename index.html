@@ -15,11 +15,12 @@
         <title>kintai</title>
         <script type="text/javascript" src="cookie.js"></script>
     </head>
-    <body onLoad= "getck()"> 
+    <body onLoad= "getck()">
     <h1>フォーエム出勤簿 </h1>
     <p><script language="JavaScript">document.write(NowYear+"年"+NowMon+"月"+NowDay+"日("+Week[NowWeek]+") "+NowHour+":"+NowMin)
             // -->
      </SCRIPT></p>
+    <div id="timecard">
             <form action="kintai.php" method="post">
                 <p><select name="name" required>
                 <option value="宇野壮春" selected>宇野壮春</option>
@@ -33,7 +34,7 @@
             </select><br />
             <input  id="submit_button" type="submit" name="submit" onClick="setck()" value="タイムカード" /></p>
                </form>
-    
+     </div>
         <div id="categories">
 
 	<section>
@@ -71,12 +72,19 @@
             <h2><A href="today.php">本日の出勤状況</A></h2>
         </div>
 	</section>
+         <section>
+	<div class="category">
+            <h2><A href="date.html">出勤状況(日付指定）</A></h2>
+        </div>
+	</section>
         </div>
 
-    <h2>更新のお知らせ</h2>
-    <div>
-    <iframe src="info.html" name="iframe">
-        このページはインラインフレームを使用しています。</iframe>
+    <div id="info">
+        <section>
+                <h2>更新のお知らせ</h2>
+                <iframe src="info.html" name="iframe">
+                    このページはインラインフレームを使用しています。</iframe>
+        </section>
     </div>
     </body>
-
+</html>

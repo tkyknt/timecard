@@ -33,12 +33,12 @@
             
             <p>ID<input type="text" name="digi_id" size="10" value="" /></p>
             <p>周波数<input type="text" name="freq" size="10" value="" /></p>
-            <p>在庫ありのみ<input type="radio" name="stock" value="TRUE" />
+            <p>在庫ありのみ<input type="radio" name="stock" value="TRUE" checked />
                 在庫無しも全て<input type="radio" name="stock" value="FALSE" /></p>
             <input type="submit" name="submit" value="検索" />
         </form>
         
-        <p><A href="index.html">ホーム</A></p>
+        <p><A href="index.php">ホーム</A></p>
 
     </body>
 </html>

@@ -83,7 +83,7 @@ while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
     echo "<td>", $row['tele_com1'], "</td>";
     echo "<td>", $row['tele_com2'], "</td>";
     echo "<td>", $row['duration'], "</td>";
-    echo "<td>", $row['update'], "</td>";
+    echo "<td>", $row['up_date'], "</td>";
     echo '<form action="ins_tar.php" method="post">';
     echo '<input type="hidden" name="tel_id" value="', $row['tel_id'], '">';
     echo '<td><input type="submit" value="選択">';
@@ -93,6 +93,6 @@ while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
 $pdo = null;
 ?>
     <p><A href="check_f.php">入力チェック</A></p>
-    <p><A href="index.html">ホーム</A></p>
+    <p><A href="index.php">ホーム</A></p>
 </body>
 </html>

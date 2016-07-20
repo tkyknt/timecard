@@ -105,7 +105,7 @@ while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
         $stock = "不明";
     }
     echo "<td>", $stock, "</td>";
-    echo "<td>", $row['update'], "</td>";
+    echo "<td>", $row['up_date'], "</td>";
     echo '<form action="upd_tel.php" method="post">';
     echo '<input type="hidden" name="tel_id" value="', $row['tel_id'], '">';
     echo '<td><input type="submit" value="編集">';
@@ -115,6 +115,6 @@ while($row = $sql->fetch(PDO::FETCH_ASSOC) ){
 $pdo = null;
 ?>
     <p><A href="check_f.php">入力チェック</A></p>
-    <p><A href="index.html">ホーム</A></p>
+    <p><A href="index.php">ホーム</A></p>
 </body>
 </html>

@@ -89,7 +89,7 @@
             if(array_key_exists($key[0] , $kintai_c)){
                 if($kintai_c[$key[0]] >= 2){
                     $kintai_ck = "<strong>重複</strong>";
-                    $taikin_ck = "<strong>-</strong>";
+                    $taikin_ck = "-";
                 }else{
                     $kintai_ck = $kinmu[$key[0]];
                     if($taikin[$key[0]] == "00:00:00"){
@@ -109,6 +109,7 @@
             }
             if($kintai_ck == "-" or $kintai_ck == "休暇"){
                 $nippo_ck = "-";
+                $taikin_ck = "-";
             }else{
                 if(array_key_exists($key[0] , $nippo_c)){
                     if($nippo_c[$key[0]] >= 2){

@@ -48,7 +48,9 @@
                     $tele_com2 = $row['tele_com2'];
                     $duration = $row['duration'];
                     $stock = $row['stock'];
-                    $update = $row['update'];
+                    $up_date = $row['up_date'];
+                    $target_id = $row['target_id'];
+                    $target = $row['target'];
                 }
                 $pdo = null;
                 ?>
@@ -73,7 +75,12 @@
                 <?php if($stock == "TRUE"){echo "checked";}?>/>
                 無し<input type="radio" name="stock" value="FALSE" 
                 <?php if($stock == "FALSE"){echo "checked";}?>/></p>
-            <p>情報更新日：<?php echo $update;?></p>
+            
+            <input type="text" name="target_id" size="3" value="<?php echo $target_id;?>" hidden>
+            <p>発信器ID：
+                <?php echo $target_id;
+                echo '　', $target?></p>
+            <p>情報更新日：<?php echo $up_date;?></p>
             
          <input type="submit" name="submit" value="登録" />
         </form>

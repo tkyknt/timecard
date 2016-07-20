@@ -49,7 +49,7 @@ body{
 	color:#000;
 }
 
-/* カテゴリ部分
+/* インデックスページ
 --------------------*/
 #categories{
 	margin:2% 0 1%;
@@ -93,11 +93,36 @@ h1{
 	margin:10px 10px;
 	padding-bottom:.2em;
 	border-bottom:dotted 1px #333;
-	font-size:30px;
+	font-size:2em;
 	font-weight:normal;
 	line-height:1;
 	position:relative;
 }
+
+input#submit_button{
+    padding: 15px 15px;
+    width:200px;
+    font-size: 1.5em;
+    border-radius:3px;              /* CSS3草案 */  
+    -webkit-border-radius: 3px;      /* Safari,Google Chrome用 */  
+    -moz-border-radius: 3px;        /* Firefox用 */ 
+    vertical-align:middle;
+    -webkit-appearance: none;
+    border-style:solid;
+    border-color:#BABDB9;
+    background: -moz-linear-gradient(top, #FFF, #EBEBEB);
+    background: -webkit-linear-gradient(top, #FFF, #EBEBEB);
+    background: linear-gradient(#FFF, #EBEBEB);
+}
+
+#timecard{
+     text-align:center;
+}
+
+#timecard select{
+     font-size:1.5em;
+}
+
 
 iframe{
     width:100%;
@@ -109,15 +134,7 @@ iframe{
 input,select{
     font-size: 1.1em;
 }
-input#submit_button{
-    padding: 5px 10px;
-    font-size: 1.2em;
-    border-radius:3px;              /* CSS3草案 */  
-    -webkit-border-radius: 3px;      /* Safari,Google Chrome用 */  
-    -moz-border-radius: 3px;        /* Firefox用 */ 
-    vertical-align:middle;
-    -webkit-appearance: none;
-}
+
 
 /*-- 説明 --*/
 .head_des{
@@ -125,5 +142,129 @@ input#submit_button{
 	padding:.4em .5em;
 	border-top:dotted 1px #333;
 	font-size:15px;
+}
+
+
+/*まず、フォーム全体の囲み罫や背景などを指定*/
+form#form_s {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	color: #333;
+	background: #F0F8F1;
+	/*↓背景グラデーションの指定*/
+	background: -moz-linear-gradient(top, #FBFCFC, #F0F8F1);
+	background: -webkit-linear-gradient(top, #FBFCFC, #F0F8F1);
+	background: linear-gradient(#FBFCFC, #F0F8F1);
+
+}
+
+/*リスト要素<ul>を初期化*/
+form#form_s ul {
+	padding:0;
+	margin:0;
+        font-size:1.2rem;
+}
+/*<li>も初期化し、ボーダーなどを指定*/
+form#form_s ul li {
+	list-style:none;
+	margin:0px;
+	padding:5px;
+	border-top: 2px solid #FFF;
+        font-size:1.2rem;
+
+}
+/*最初の<li>にはボーダーをつけない（:first-child疑似クラスによる指定）*/
+form#form_s ul li:first-child {
+	border-top:none;}
+
+
+/* span要素をブロック化しフロートでフォーム部品と横に並べる*/
+form#form_s ul li span {
+	width: 12em;
+	margin:0px;
+	display:block;
+        font-size:1.2rem;
+
+/* floatでなく、CSS3 の「display: inline-block」を使う手もアリ 
+	display: inline-block;*/
+}
+
+/*「:after」で <li>の末尾でフロートをクリア*/
+form#form_s ul li:after {
+	content:".";
+	display:block;
+	height:0;
+	visibility:hidden;
+
+}
+
+/* テキスト入力部品の見た目を統一する */
+form#form_s ul li label .txtfiled, form#form_s select {
+	width:250px;
+	padding:3px 5px;
+	margin:0px;
+	color:#333;
+	border: solid 1px #ccc;
+	/*テキストエリア内にシャドウをつける。最初にbackground初期化が必要*/
+    background: #fff;
+	-webkit-box-shadow: 2px 3px 5px -2px #ddd inset;
+	-moz-box-shadow: 2px 3px 5px -2px #ddd inset;
+	box-shadow: 2px 3px 5px -2px #ddd inset;
+	/*角丸にする*/
+	border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+}
+form#form_s select {
+	/*selectは250では大きすぎるので*/
+	width:250px;
+}
+
+/*チェックボックス、ラジオボタンのブロックの指定*/
+form#form_s ul li p {
+	margin:5px 0 0 40px;
+}
+/*チェックボックス、ラジオボタンの label要素を横に並べる*/
+form#form_s ul li p label {
+	margin-right: 2em;
+	display: block;
+	float: left;
+}
+/*input要素とテキストがくっつかないように右にマージンを少し*/
+form#form_s ul li p label input {
+	margin-right:0.5em;
+}
+/*チェックボックス、ラジオボタンの label要素にロールオーバー時の変化を指定する*/
+form#form_s ul li p label:hover {
+	background : #FFF;
+	color: #096;
+	font-weight:bold;
+}
+/*チェックボックスの<label>の横幅を統一する（<p>にクラス名.checkをつけて）*/
+form#form_s ul li p.check label {
+	width: 9em;
+}
+/*送信・リセットボタンの体裁を指定（[type="○○"]で属性の値でセレクト）*/
+form#form_s ul li input[type="submit"] ,
+form#form_s ul li input[type="button"] {
+	cursor:pointer;     /*←これでカーソルを指先型に変化させる*/
+	font-weight: bold;
+	width:120px;
+	padding: 10px 0;
+	margin-right:0.5em;
+	border-style:solid;
+        border-color:#696969;
+        border-width:1px;
+	color:#696969;
+	background:#FFF;
+/*↓背景グラデーションの指定です*/
+	background: -moz-linear-gradient(top, #FFF, #EBEBEB);
+	background: -webkit-linear-gradient(top, #FFF, #EBEBEB);
+	background: linear-gradient(#FFF, #EBEBEB);
+/*↓以下、ボックスの角丸、シャドウ、テキストシャドウの指定*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 }
