@@ -74,6 +74,7 @@ session_start();
                 <optgroup label="イノシシ">
                 <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
                 <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="山形県イノシシ調査">山形県イノシシ調査</option>
                 <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
                 <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
                 </optgroup>
@@ -81,12 +82,16 @@ session_start();
                 <optgroup label="シカ">
                 <option value="早池峰シカ調査">早池峰シカ調査</option>
                 <option value="白神シカ調査">白神シカ調査</option>
-                <option value="環境省シカ調査">環境省シカ調査</option>
                 <option value="ＷＭＯ研修会事業">ＷＭＯ研修会事業</option>
                 <option value="環境省白神科学委員運営">環境省白神科学委員運営</option>
+                <option value="東北森林管理局高度化実証事業">東北森林管理局高度化実証事業</option>
+                <option value="新潟県シカイノ管理計画作成業務">新潟県シカイノ管理計画作成業務</option>
+                
                 </optgroup>
                 
                 <option value="その他">その他</option>
+                <option value="山形大学Yo-coe">山形大学Yo-coe</option>
+                <option value="その他研修会">その他研修会</option>
         </select></label>
         </li>
         <li>    

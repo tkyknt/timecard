@@ -80,39 +80,47 @@
                 </li>
                 <li>
                     <label><span>主な業務</span>
-                        <select name="gname">
-                            <option value="" selected></option>
-                            <option value="会社業務">会社業務</option>
-                            
-                            <optgroup label="サル">
-                                <option value="仙台市サル調査">仙台市サル調査</option>
-                                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
-                                <option value="白石市サル調査">白石市サル調査</option>
-                                <option value="釜石市サル調査">釜石市サル調査</option>
-                                <option value="宮城県サル調査">宮城県サル調査</option>
-                                <option value="福島県サル調査">福島県サル調査</option>
-                                <option value="南奥羽サル調査">南奥羽サル調査</option>
-                            </optgroup>
-                            <optgroup label="クマ">
-                                <option value="仙台市クマ調査">仙台市クマ調査</option>
-                                <option value="宮城県クマ調査">宮城県クマ調査</option>
-                                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
-                            </optgroup>
-                            <optgroup label="イノシシ">
-                                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
-                                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
-                                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
-                                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
-                            </optgroup>
-                            <optgroup label="シカ">
-                                <option value="早池峰シカ調査">早池峰シカ調査</option>
-                                <option value="白神シカ調査">白神シカ調査</option>
-                                <option value="環境省シカ調査">環境省シカ調査</option>
-                                <option value="ＷＭＯ研修会事業">ＷＭＯ研修会事業</option>
-                                <option value="環境省白神科学委員運営">環境省白神科学委員運営</option>
-                            </optgroup>
-                            <option value="その他">その他</option>
-                        </select></label>
+                        <select name="gname" id="f-gname">
+                <option value="" selected></option>
+                <option value="会社業務">会社業務</option>
+                <optgroup label="サル">
+                <option value="仙台市サル調査">仙台市サル調査</option>
+                <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
+                <option value="白石市サル調査">白石市サル調査</option>
+                <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="宮城県サル調査">宮城県サル調査</option>
+                <option value="福島県サル調査">福島県サル調査</option>
+                <option value="南奥羽サル調査">南奥羽サル調査</option>
+                </optgroup>
+                
+                <optgroup label="クマ">
+                <option value="仙台市クマ調査">仙台市クマ調査</option>
+                <option value="宮城県クマ調査">宮城県クマ調査</option>
+                <option value="宮城県クマ錯誤捕獲対応">宮城県クマ錯誤捕獲対応</option>
+                </optgroup>
+                
+                <optgroup label="イノシシ">
+                <option value="宮城県イノシシ集落ぐるみ">宮城県イノシシ集落ぐるみ</option>
+                <option value="福島県イノシシ調査">福島県イノシシ調査</option>
+                <option value="山形県イノシシ調査">山形県イノシシ調査</option>
+                <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
+                <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                </optgroup>
+                
+                <optgroup label="シカ">
+                <option value="早池峰シカ調査">早池峰シカ調査</option>
+                <option value="白神シカ調査">白神シカ調査</option>
+                <option value="ＷＭＯ研修会事業">ＷＭＯ研修会事業</option>
+                <option value="環境省白神科学委員運営">環境省白神科学委員運営</option>
+                <option value="東北森林管理局高度化実証事業">東北森林管理局高度化実証事業</option>
+                <option value="新潟県シカイノ管理計画作成業務">新潟県シカイノ管理計画作成業務</option>
+                
+                </optgroup>
+                
+                <option value="その他">その他</option>
+                <option value="山形大学Yo-coe">山形大学Yo-coe</option>
+                <option value="その他研修会">その他研修会</option>
+        </select></label></label>
                 </li>
                 <li>
                     <label><span>内容</span>
