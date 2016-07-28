@@ -24,6 +24,7 @@
         echo '<p>装着日：', $_POST['set_date'], '</p>';
         echo '<p>装着年齢：', $_POST['set_age'], '</p>';
         echo '<p>受信感度：', $_POST['sens'], '</p>';
+        echo '<p>最適周波数：', $_POST['freq_s'], '</p>';
         echo '<p>備考：', $_POST['target_com'], '</p>';
         echo '<p>一覧に表示：', $_POST['list_disp'], '</p><br>';
         
@@ -50,6 +51,7 @@
         echo '<input type="hidden" name="set_date" value="', $_POST['set_date'], '">';
         echo '<input type="hidden" name="set_age" value="', $_POST['set_age'], '">';
         echo '<input type="hidden" name="sens" value="', $_POST['sens'], '">';
+        echo '<input type="hidden" name="freq_s" value="', $_POST['freq_s'], '">';
         echo '<input type="hidden" name="target_com" value="', $_POST['target_com'], '">';
         echo '<input type="hidden" name="list_disp" value="', $_POST['list_disp'], '">';
         echo '<input type="hidden" name="tel_id" value="', $_POST['tel_id'], '">';

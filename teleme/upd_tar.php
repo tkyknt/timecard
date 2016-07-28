@@ -85,7 +85,8 @@
                 echo '>', $value, '</option>';
             }
             echo '</select></p>';
-            
+            echo '<p>最適周波数：<input type="text" name="freq_s" size="10" value="',$row['freq'], '" ><br>'
+                    , '<small>※一覧に発信器の登録周波数と異なる周波数を表示したい場合のみ編集。ここを変更しても発信器の登録周波数は変わらない</small></p>';
             echo '<p>発信器ID：',$row['tel_id'], '</p>';
             echo '<input type="text" name="tel_id" size="3" value="', $row['tel_id'], '" hidden>';
             $selection = array('LT','ATS', 'GPS', 'その他');
@@ -98,10 +99,7 @@
                 echo '>', $value, '</option>';
             }
             echo '</select></p>';
-            
-            echo '<p>周波数：<input type="text" name="freq" size="10" value="',
-                    $row['freq'], '"></p>';
-            
+
             echo '<p>デジタルID：<input type="text" name="digi_id" size="10" value="',
                     $row['digi_id'], '"></p>';
             

@@ -31,13 +31,12 @@
         
         $up_date = date("Y-m-d");
         
-         $sql = 'UPDATE teleme SET category = :category, freq = :freq, '
+         $sql = 'UPDATE teleme SET category = :category, '
                . 'digi_id = :digi_id, belt = :belt, battery = :battery, '
                . 'antenna = :antenna, up_date = :up_date WHERE tel_id = :tel_id';
         $st = $pdo->prepare($sql);
         $params = array(
             ':category' => $_POST['category'],
-            ':freq' => $_POST['freq'],
             ':digi_id' => $_POST['digi_id'],
             ':belt' => $_POST['belt'],
             ':battery' => $_POST['battery'],
@@ -45,6 +44,7 @@
             ':up_date' => $up_date,
             ':tel_id' => $_POST['tel_id']);
         $st-> execute($params);
+        
         
         $sql = 'UPDATE target SET groups = :groups, target = :target, sex = :sex, '
             . 'set_date = :set_date, set_age = :set_age, target_com = :target_com, '
@@ -62,7 +62,7 @@
             ':target_com' => $_POST['target_com'],
             ':sens' => $_POST['sens'],
             ':category' => $_POST['category'],
-            ':freq' => $_POST['freq'],
+            ':freq' => $_POST['freq_s'],
             ':digi_id' => $_POST['digi_id'],
             ':belt' => $_POST['belt'],
             ':battery' => $_POST['battery'],
@@ -81,7 +81,7 @@
         echo '<p>', $_POST['sens'], '</p>';
         echo '<p>', $_POST['tel_id'], '</p>';
         echo '<p>', $_POST['category'], '</p>';
-        echo '<p>', $_POST['freq'], '</p>';
+        echo '<p>', $_POST['freq_s'], '</p>';
         echo '<p>', $_POST['digi_id'], '</p>';
         echo '<p>', $_POST['belt'], '</p>';
         echo '<p>', $_POST['battery'], '</p>';

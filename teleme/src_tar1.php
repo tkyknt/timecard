@@ -32,8 +32,8 @@
          <th width="84">装着<br>年月日</th><th width="30">装着<br>年齢</th>
          <th>備考</th><th>一覧<br>表示</th><th>選択</th></tr>';
      
-    if($_POST['sens'] == "TRUE"){
-    $select = 'SELECT * FROM target WHERE sens NOT IN("×") AND ';
+    if($_POST['list_disp'] == "TRUE"){
+    $select = 'SELECT * FROM target WHERE list_disp = "TRUE" AND ';
     }else{
     $select = "SELECT * FROM target WHERE ";
     }

@@ -41,8 +41,8 @@
             
             <p>個体名：<input type="text" name="target" size="10" value="" /></p>
 
-            <p>発信中のみ<input type="radio" name="sens" value="TRUE" checked/>
-                登録全個体<input type="radio" name="sens" value="FALSE" /></p>
+            <p>一覧表示個体のみ検索<input type="radio" name="list_disp" value="TRUE" checked/>　
+                全登録個体検索<input type="radio" name="list_disp" value="FALSE" /></p>
             <input type="submit" name="submit" value="検索" />
         </form>
         

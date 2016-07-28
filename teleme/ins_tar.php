@@ -115,6 +115,7 @@
                     <option value="×？" <?php if($sens == "×？"){echo 'selected';}?>>×？</option>
                     <option value="不明" <?php if($sens == "不明"){echo 'selected';}?>>不明</option>
             </select></p>
+            <p>最適周波数：<input type="text" name="freq_s" size="10" value="" ><small>※一覧に登録周波数と異なる周波数を表示したい場合のみ入力</small></p>
             <p>備考：<input type="text" name="target_com" size="20" value="<?php echo $target_com;?>" /></p>
             <p>一覧に表示：する<input type="radio" name="list_disp" value="TRUE" <?php if($list_disp == "TRUE" or empty($list_disp)){echo 'checked';}?>/>
                 しない<input type="radio" name="list_disp" value="FALSE" <?php if($list_disp == "FALSE"){echo 'checked';}?>/></p>

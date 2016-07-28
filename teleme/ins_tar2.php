@@ -29,12 +29,18 @@
                         die($e->getMessage());
         }
         
+        if($_POST['freq_s'] == ""){
+            $freq_s = $_POST['freq'];
+        }else{
+            $freq_s = $_POST['freq_s'];
+        }
+        
         $up_date = date("Y-m-d");
         
         $st = $pdo->prepare("INSERT INTO target VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $st->execute(array('',$_POST['groupname'], $_POST['target'],$_POST['sex'],$_POST['set_date'],
             $_POST['set_age'],$_POST['target_com'], $_POST['sens'],$_POST['tel_id'],
-            $_POST['category'], $_POST['freq'], $_POST['digi_id'], $_POST['belt'],
+            $_POST['category'], $freq_s, $_POST['digi_id'], $_POST['belt'],
             $_POST['battery'],$_POST['antenna'], $_POST['list_disp'], $up_date));
         
         $sql = $pdo->prepare("SELECT * FROM target WHERE tel_id = :tel_id");
