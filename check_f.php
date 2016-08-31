@@ -26,6 +26,7 @@
                 <option value="橋本光平">橋本光平</option>
                 <option value="伊左治美奈">伊左治美奈</option>
                 <option value="木野田拓也">木野田拓也</option>
+                <option value="浅井隆之">浅井隆之</option>
             </select><br />
             確認したい月：<input type="month" value ="<?php echo date("Y-m"); ?>"
                           name="month"><br />

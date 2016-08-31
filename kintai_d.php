@@ -28,6 +28,7 @@
                             <option value="橋本光平">橋本光平</option>
                             <option value="伊左治美奈">伊左治美奈</option>
                             <option value="木野田拓也">木野田拓也</option>
+                            <option value="浅井隆之">浅井隆之</option>
                         </select></label>
                 </li>
                 <li>
@@ -88,6 +89,7 @@
                 <option value="七ヶ宿町サル調査">七ヶ宿町サル調査</option>
                 <option value="白石市サル調査">白石市サル調査</option>
                 <option value="釜石市サル調査">釜石市サル調査</option>
+                <option value="大船渡市サル調査">大船渡市サル調査</option>
                 <option value="宮城県サル調査">宮城県サル調査</option>
                 <option value="福島県サル調査">福島県サル調査</option>
                 <option value="南奥羽サル調査">南奥羽サル調査</option>
@@ -105,6 +107,7 @@
                 <option value="山形県イノシシ調査">山形県イノシシ調査</option>
                 <option value="JAXAイノシシ調査">JAXAイノシシ調査</option>
                 <option value="角田市イノシシ講習会">角田市イノシシ講習会</option>
+                <option value="Jヴィレッジイノシシ調査">Jヴィレッジイノシシ調査</option>
                 </optgroup>
                 
                 <optgroup label="シカ">
@@ -114,11 +117,10 @@
                 <option value="環境省白神科学委員運営">環境省白神科学委員運営</option>
                 <option value="東北森林管理局高度化実証事業">東北森林管理局高度化実証事業</option>
                 <option value="新潟県シカイノ管理計画作成業務">新潟県シカイノ管理計画作成業務</option>
-                
                 </optgroup>
                 
                 <option value="その他">その他</option>
-                <option value="山形大学Yo-coe">山形大学Yo-coe</option>
+                <option value="山形大学YU-COE">山形大学YU-COE</option>
                 <option value="その他研修会">その他研修会</option>
         </select></label></label>
                 </li>
